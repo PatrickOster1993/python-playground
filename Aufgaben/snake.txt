@@ -1,0 +1,3 @@
+halloSNAKE_WAS_HERE
+das ist ein TestSNAKE_WAS_HERE
+Der test wird wahrscheinlich erfolgreich seinSNAKE_WAS_HERE
