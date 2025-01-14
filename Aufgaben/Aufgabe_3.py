@@ -9,7 +9,9 @@ https://stackoverflow.com/questions/22743860/python-fizzbuzz
 """
 
 c=1
-while c<101:print((c%3<1)*'Fizz'+(c%5<1)*'Buzz'or c);c+=1
+while c<101:print((c%3==0)*'Fizz'+(c%5==0)*'Buzz'or c);c+=1 
+#alternative von stackoverflow
+#while c<101:print((c%3<1)*'Fizz'+(c%5<1)*'Buzz'or c);c+=1 
 
 """
 # Prüft, ob c durch 3 teilbar ist:
