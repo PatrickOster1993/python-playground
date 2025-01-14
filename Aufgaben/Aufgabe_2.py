@@ -27,7 +27,7 @@ print()
 fahrenheit = float(input("Gib eine Temperarur in Fahrenheit: "))
 celsius = (fahrenheit - 32) * 5/9
 print(f"{fahrenheit} Fahrenheit sind: {celsius:.0f} Celsius") #Alternativeschreibweise hier funktioniert {celsius:.0f}!!!
-#print(str(fahrenheit) + " Fahrenheit sind: " + str(celsius:.0f) + " Celsius")
+#print(str(fahrenheit) + " Fahrenheit sind: " + str(celsius) + " Celsius")
 
 """
 fun fact 33.8 Fahrenheit sind ist Aufgrund der Gleitkommazahlen (Binäre Rechnung) nicht 1 sondern 0.9999999999999984 im PC
