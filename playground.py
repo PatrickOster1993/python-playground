@@ -67,6 +67,15 @@ if ist_richtig or ist_falsch:
 else:
     print("Beide sind falsch")
 
+# '==' vs. 'is'
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a == c)  # True, weil die Listen den gleichen Wert haben
+print(a is c)  # False, weil es zwei verschiedene Listen im Speicher sind
+print(a is b)  # True, weil a und b dasselbe Objekt im Speicher sind
+
 # Schleifen
 # For-Schleife
 for i in range(5):
