@@ -1,6 +1,7 @@
 
 
-# Aufgabe 2
+# Aufgabe 2 Schreiben Sie ein Programm, das eine Temperatur in Celsius in Fahrenheit umrechnet und dann anschließend
+# das Ergebnis in der Konsole ausgibt. Die Umrechnungsformel lautet wie folgt: F = 1.8 * C + 32
 
 def fahrenheit_zu_celsius(fahrenheit):
     return((fahrenheit-32)/1.8)
