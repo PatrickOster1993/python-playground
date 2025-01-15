@@ -26,7 +26,7 @@ monat = ["Januar","Februar","März","April","Mai","Juni","Juli"]
 # da jede Zeile im DataFrame eine vollständige Datenreihe darstellt.
 
 # DataFrame erstellen !!! auch hier kein Array sondern ein DataFrame
-df = pd.DataFrame({"Tag": tage, "Monat" : monat ,"Temperatur": temperaturen})
+df = pd.DataFrame({"Tag": tage, "Monat" : monat ,"Temperatur": temperaturen}) #Wie soll ich mir diese klammern merken?!
 
 # DataFrame ausgeben
 print(df)
