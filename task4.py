@@ -24,6 +24,7 @@ def ersetze_punkte(text):
 
 print("Aufgabe 4") # Ausgabe des Titels der Aufgabe
 print("Bitte geben Sie einen längeren Text ein:")
+
 text = input() # Eingabe des Textes
 text = ersetze_punkte(text) # Ersetzen von Punkten
 with open("snake.txt", "w") as file: # Öffnen der Datei
