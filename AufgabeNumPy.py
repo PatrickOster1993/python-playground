@@ -1,0 +1,9 @@
+import numpy as np
+
+array = np.array ([12, 15, 14, 10, 9, 13, 11])
+
+print ("Die niedrigste Temperatur beträgt : ",array.min(), "°C" )
+
+print ("Die maximale temperatur beträgt : ",array.max(), "°C" )
+
+print ("Die Durschnittliche temperatur beträgt : ",array.mean(), "°C" )
