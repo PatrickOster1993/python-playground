@@ -10,10 +10,10 @@ print(f"Mein Name ist {Name}, ich bin {Alter} Jahre alt und ich liebe {Lieblings
 
 # Aufgabe 2
 
-def CelsiusToFahrenheit()
+def CelsiusToFahrenheit(Celsiuszahl)
     return (1.8 * Celsiuszahl) + 32
 
-def FahrenheitToCelsius()
+def FahrenheitToCelsius(Fahrenheitszahl)
     return (Fahrenheitszahl - 32) * 5/9
 
 print("Entscheide dich für den Fahrenheitsrechner oder den Celsiusrechner. ")
