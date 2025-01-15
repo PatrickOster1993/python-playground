@@ -11,5 +11,3 @@ except ValueError:
     
 except Exception as e:
     print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
-
-# Erweiterungsmöglichkeit: Nutzer entscheiden lassen, ob °C in °F oder umgekehrt!
