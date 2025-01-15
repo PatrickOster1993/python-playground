@@ -17,6 +17,24 @@ Fehlende Daten behandeln:
 Einfache Methoden zur Erkennung, Bearbeitung und Bereinigung fehlender Daten.
 
 
+Häufig genutzte statistische Funktionen
+ 
+    df.mean()
+    Durchschnitt aller Werte.
+
+    df.median()
+    Median aller Werte.
+
+    df.sum()
+    Summe der Werte.
+
+    df.std()
+    Standardabweichung.
+
+
+
+
+
 Am häufigsten genutzte Funktionen und Methoden in Pandas
 
 1. Erstellen eines DataFrames

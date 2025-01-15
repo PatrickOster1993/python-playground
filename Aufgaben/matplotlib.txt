@@ -1,0 +1,116 @@
+Wofür wird Matplotlib genutzt?
+Matplotlib ist eine weit verbreitete Python-Bibliothek, die hauptsächlich zum Erstellen von 2D-Diagrammen und Visualisierungen verwendet wird. Sie ist eine der bekanntesten Bibliotheken zur Darstellung von Daten und wird häufig in den Bereichen Datenanalyse, Wissenschaft, Ingenieurwesen, Maschinelles Lernen und Statistik eingesetzt.
+
+Wichtige Anwendungsbereiche von Matplotlib:
+    Visualisierung von Daten: Erstellen von Linien-, Balken-, Kreisdiagrammen und mehr.
+    
+    Darstellung von Trends und Mustern: Ideal, um Muster in großen Datensätzen zu erkennen.
+    
+    Erstellen von wissenschaftlichen und mathematischen Diagrammen: Visualisieren von mathematischen Funktionen, Algorithmen oder Experimentdaten.
+    
+    Interaktive Visualisierungen: In Verbindung mit anderen Bibliotheken kann Matplotlib interaktive Diagramme ermöglichen.
+
+
+Zusammenfassung der wichtigsten Matplotlib-Funktionen:
+
+    plot() - Erzeugt Linienplots.
+    bar() - Erzeugt Balkendiagramme.
+    scatter() - Erzeugt Streudiagramme.
+    hist() - Erzeugt Histogramme.
+    pie() - Erzeugt Kreisdiagramme.
+    title() - Fügt Titel hinzu.
+    xlabel() / ylabel() - Beschriftet Achsen.
+    legend() - Fügt eine Legende hinzu.
+    grid() - Fügt ein Gitternetz hinzu.
+    savefig() - Speichert Diagramme als Dateien.
+    subplot() / subplots() - Erstellt mehrere Diagramme in einem.
+    annotate() - Fügt Anmerkungen hinzu.
+
+
+Meistgenutzte Funktionen von Matplotlib
+
+1. Erstellen von einfachen Diagrammen
+    plt.plot()
+    Erzeugt ein Liniendiagramm. Häufig verwendet, um Trends in Daten darzustellen.
+
+        import matplotlib.pyplot as plt
+
+        x = [1, 2, 3, 4, 5]
+        y = [2, 4, 6, 8, 10]
+        plt.plot(x, y)
+        plt.show()
+
+    plt.bar()
+    Erstellt ein Balkendiagramm, ideal für die Darstellung von kategorialen Daten.
+
+        categories = ['A', 'B', 'C', 'D']
+        values = [5, 3, 9, 1]
+        plt.bar(categories, values)
+        plt.show()
+
+    plt.scatter()
+    Erzeugt ein Streudiagramm, um Beziehungen zwischen zwei Variablen darzustellen.
+
+        x = [1, 2, 3, 4, 5]
+        y = [5, 4, 3, 2, 1]
+        plt.scatter(x, y)
+        plt.show()
+
+    plt.hist()
+    Erstellt ein Histogramm zur Darstellung der Verteilung von Daten.
+
+        data = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5]
+        plt.hist(data, bins=5)
+        plt.show()
+
+    plt.pie()
+    Erstellt ein Kreisdiagramm (Tortendiagramm).
+
+        labels = ['A', 'B', 'C']
+        sizes = [15, 30, 55]
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        plt.show()
+
+2. Anpassen von Diagrammen
+
+    plt.title()
+    Fügt einen Titel zum Diagramm hinzu.
+
+        plt.plot(x, y)
+        plt.title("Beispiel Liniendiagramm")
+        plt.show()
+
+    plt.xlabel() und plt.ylabel()
+    Beschriftet die Achsen.
+
+        plt.plot(x, y)
+        plt.xlabel("X-Achse")
+        plt.ylabel("Y-Achse")
+        plt.show()
+
+    plt.legend()
+    Fügt eine Legende zu einem Diagramm hinzu, um die Datenreihen zu kennzeichnen.
+
+        plt.plot(x, y, label='Datenreihe 1')
+        plt.legend()
+        plt.show()
+
+    plt.grid()
+    Fügt ein Gitternetz zum Diagramm hinzu, was besonders in wissenschaftlichen Diagrammen nützlich ist.
+
+        plt.plot(x, y)
+        plt.grid(True)
+        plt.show()
+
+    plt.axis()
+    Setzt die Grenzen der Achsen.
+
+        plt.plot(x, y)
+        plt.axis([0, 6, 0, 12])  # [xmin, xmax, ymin, ymax]
+        plt.show()
+
+    plt.savefig()
+    Speichert das Diagramm als Bilddatei (z. B. PNG, PDF).
+
+        plt.plot(x, y)
+        plt.savefig('diagramm.png')
