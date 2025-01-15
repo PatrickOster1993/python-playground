@@ -1,0 +1,94 @@
+Wofür wird Pandas genutzt?
+Pandas ist eine leistungsstarke Python-Bibliothek, die speziell für die Datenanalyse und Datenmanipulation entwickelt wurde.
+Es wird häufig in Bereichen wie Data Science, Statistik, Maschinelles Lernen, Finanzanalysen und Web-Scraping verwendet.
+
+Vorteile von Pandas:
+Tabellenartige Datenstrukturen:
+
+Pandas bietet DataFrames, die wie Tabellen in Excel oder SQL aufgebaut sind und einfach zu handhaben sind.
+Effiziente Datenmanipulation:
+
+Daten können gefiltert, sortiert, gruppiert und zusammengeführt werden.
+Datenimport und -export:
+
+Unterstützt viele Formate wie CSV, Excel, SQL, JSON und mehr.
+Fehlende Daten behandeln:
+
+Einfache Methoden zur Erkennung, Bearbeitung und Bereinigung fehlender Daten.
+
+
+Am häufigsten genutzte Funktionen und Methoden in Pandas
+
+1. Erstellen eines DataFrames
+    
+    pd.DataFrame()
+    Erstellt ein DataFrame aus einer Liste, einem Wörterbuch oder einer anderen Datenquelle.
+    
+        data = {
+            "Name": ["Alice", "Bob", "Charlie"],
+            "Alter": [25, 30, 35]
+        }
+        df = pd.DataFrame(data)
+        print(df)
+
+2. Daten laden
+
+    pd.read_csv()
+    Lädt Daten aus einer CSV-Datei.
+
+        df = pd.read_csv("daten.csv")
+        
+    pd.read_excel()
+    Lädt Daten aus einer Excel-Datei.
+    
+        df = pd.read_excel("daten.xlsx")
+    
+    pd.read_sql()
+    Lädt Daten aus einer SQL-Datenbank.
+
+        df = pd.read_sql("SELECT * FROM tabelle", verbindung)
+        
+
+3. Daten anzeigen
+    
+    df.head()
+    Zeigt die ersten Zeilen des DataFrames.
+
+        print(df.head(5))  # Standardmäßig die ersten 5 Zeilen
+        df.tail()
+
+    Zeigt die letzten Zeilen des DataFrames.
+
+        print(df.tail(3))
+
+    df.info()
+    Zeigt Informationen über das DataFrame wie Spaltennamen, Datentypen und fehlende Werte.
+
+        df.info()
+  
+    df.describe()
+    Gibt statistische Kennzahlen (wie Mittelwert, Standardabweichung) für numerische Spalten.
+
+        print(df.describe())
+
+4. Daten filtern
+
+    Filtern mit Bedingungen:
+
+        gefiltert = df[df["Alter"] > 30]
+        print(gefiltert)
+
+    Nach mehreren Bedingungen filtern:
+
+        gefiltert = df[(df["Alter"] > 25) & (df["Name"] == "Alice")]
+
+5. Daten sortieren
+
+    Nach einer Spalte sortieren:
+
+        df.sort_values("Alter", ascending=True, inplace=True)
+
+
+Nach mehreren Spalten sortieren:
+    
+    df.sort_values(["Alter", "Name"], ascending=[True, False])
