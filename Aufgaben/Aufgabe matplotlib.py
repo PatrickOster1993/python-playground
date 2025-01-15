@@ -27,3 +27,26 @@ plt.legend()
 
 # Diagramm anzeigen
 plt.show()
+
+
+# Daten:
+# tage: Wochentage (x-Achse).
+# temperaturen: Temperaturen (y-Achse).
+
+# Durchschnitt:
+# Berechnet mit np.mean(temperaturen).
+
+# Diagramm:
+# plt.plot zeichnet die Linie, marker='o' fügt Marker für Datenpunkte hinzu.
+
+# Horizontale Linie für den Durchschnitt:
+# plt.axhline fügt eine horizontale Linie bei y=durchschnitt ein.
+
+# Beschriftungen:
+# xlabel, ylabel, und title für Achsen und Titel.
+
+# Legende:
+# plt.legend() zeigt die Legende an.
+
+# Diagramm anzeigen:
+# plt.show() öffnet das Diagramm
