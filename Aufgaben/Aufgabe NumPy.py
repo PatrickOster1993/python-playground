@@ -34,3 +34,8 @@ print(f"Maximale Temperatur: {max_temp}°C")
 # Minimale Temperatur
 min_temp = np.min(temperaturen)
 print(f"Minimale Temperatur: {min_temp}°C")
+
+# np.array: Erstellt ein NumPy-Array mit den Temperaturen.
+# np.mean: Berechnet den Durchschnittswert des Arrays.
+# np.max: Gibt die maximale Temperatur im Array zurück.
+# np.min: Gibt die minimale Temperatur im Array zurück.
