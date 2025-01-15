@@ -35,3 +35,9 @@ Schreiben Sie eine Funktion, die Ihnen einen längeren Text (z. B. die im heutig
 Innerhalb der **playground.py** befindet sich eine Codesequenz, unterhalb des Kommentars mit dem Titel "Experten (nicht erforderlich)". Versuchen Sie den Code selbständig nachzuvollziehen und machen Sie sich ggf. Notizen!
 
 > *Hinweis*: Die kreativsten Lösungen erlangen stets grenzenlose Ehre!
+
+### Aufgabe 6
+Machen Sie sich bitte mit den Modulen **NumPy**, **Pandas** sowie **Matplotlib** vertraut!
+
+### Aufgabe 7
+> siehe **temperaturanalyse.md**

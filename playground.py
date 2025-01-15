@@ -2,9 +2,9 @@
 # print("### Playground ###")
 # print("##################")
 
-# # ============================
-# # Anfänger
-# # ============================
+# ============================
+# Anfänger
+# ============================
 
 # # Einfacher Kommentar (1 Zeile)
 
@@ -197,9 +197,9 @@
 #     content = file.read()
 # print("Inhalt der Datei:", content)
 
-# # ============================
-# # Experten (nicht erforderlich)
-# # ============================
+# ============================
+# Experten (nicht erforderlich)
+# ============================
 
 # # List Comprehension
 # verdoppelte_werte = [num * 2 for num in zahlen_liste]
