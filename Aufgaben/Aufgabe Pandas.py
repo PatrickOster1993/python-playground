@@ -21,3 +21,15 @@ data = {
 df = pd.DataFrame(data)
 
 print(df)
+
+
+# Liste der Wochentage und Temperaturen:
+
+# tage enthält die Namen der Wochentage.
+# temperaturen enthält die Temperaturen der Woche.
+# DataFrame erstellen:
+
+# pd.DataFrame(data) erstellt eine Tabelle mit den beiden Spalten Tag und Temperatur (°C).
+# Ausgabe des DataFrames:
+
+# print(df) gibt die Tabelle in der Konsole aus.
