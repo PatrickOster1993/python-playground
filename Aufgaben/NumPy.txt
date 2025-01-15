@@ -1,0 +1,69 @@
+Wofür wird NumPy genutzt?
+NumPy (Numerical Python) ist eine leistungsstarke Bibliothek in Python, die für wissenschaftliche Berechnungen und Datenverarbeitung verwendet wird. Sie wird oft in den Bereichen Datenanalyse, Maschinelles Lernen, Statistik, Bildverarbeitung und Simulation eingesetzt.
+
+Vorteile von NumPy:
+Effiziente Array-Operationen: NumPy bietet mehrdimensionale Arrays (ähnlich wie Matrizen), die wesentlich schneller und effizienter sind als Standard-Python-Listen.
+
+Vektoroperationen: Ermöglicht mathematische Operationen auf ganzen Arrays ohne Schleifen (z. B. Addition, Multiplikation).
+
+Integration: Wird oft mit anderen Bibliotheken wie Pandas, Matplotlib und Scikit-Learn verwendet.
+
+Große Menge an Funktionen: NumPy hat viele eingebaute Funktionen für lineare Algebra, Statistik, Fourier-Transformationen usw.
+
+
+
+Am häufigsten genutzte Funktionen und Methoden in NumPy
+
+1. Erstellung von Arrays
+
+    np.array()
+    Erstellt ein NumPy-Array aus einer Liste oder einem Tupel.
+
+    np.zeros()
+    Erstellt ein Array voller Nullen.
+
+    np.ones()
+    Erstellt ein Array voller Einsen.
+
+    np.arange()
+    Erstellt ein Array mit gleichmäßigen Schritten.
+
+    np.linspace()
+    Erstellt ein Array mit einer bestimmten Anzahl gleichmäßig verteilter Werte.
+
+2. Mathematische Operationen
+
+    np.mean()
+    Berechnet den Durchschnittswert.
+
+    np.max() und np.min()
+    Gibt das Maximum bzw. Minimum zurück.
+
+    np.sum()
+    Berechnet die Summe aller Elemente.
+
+    np.prod()
+    Gibt das Produkt aller Elemente zurück.
+
+    np.sqrt()
+    Berechnet die Quadratwurzel jedes Elements.
+
+3. Statistische Funktionen
+
+    np.std()
+    Berechnet die Standardabweichung.
+
+    np.var()
+    Berechnet die Varianz.
+
+4. Indexierung und Slicing
+
+    Zugriff auf Elemente:
+    arr = np.array([10, 20, 30, 40])
+    print(arr[2])  # 30
+
+    Slicing:
+    arr = np.array([10, 20, 30, 40])
+    print(arr[1:3])  # [20, 30]
+
+
