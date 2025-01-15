@@ -1,5 +1,9 @@
 get_fahrenheit_by_celsius = lambda celsius: 1.8 * celsius + 32
 
+# Alternative:
+# def get_fahrenheit_by_celsius(celsius):
+    # return (1.8 * celsius + 32)
+
 try:
     celsius = float(input("Bitte geben Sie die Temperatur in Celsius ein: "))
     fahrenheit = get_fahrenheit_by_celsius(celsius)
