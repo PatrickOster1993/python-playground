@@ -1,3 +1,13 @@
+# NumPy:
+
+#    Erstelle ein NumPy-Array mit den Temperaturen (in °C) der Woche: 
+#    [12, 15, 14, 10, 9, 13, 11].
+#    Berechne:
+#    die durchschnittliche Temperatur,
+#    die maximale Temperatur,
+#    die minimale Temperatur.
+
+
 import numpy as np
 
 array = np.array ([12, 15, 14, 10, 9, 13, 11])
