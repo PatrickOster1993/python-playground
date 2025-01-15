@@ -8,23 +8,31 @@
 zahlen_liste = [1, 2, 3, 4, 5]
 print("Liste:", zahlen_liste[1])
 
-# # List Comprehension -> verdopellt die Werte in der Liste
+# # List Comprehension -> verdopellt die Werte in der Liste - auch strings!
 # verdoppelte_werte = [num * 2 for num in zahlen_liste]
 # print("Verdoppelte Werte:", verdoppelte_werte)
 
 
-# # Lambda-Funktion -> quasi dasselbe wie das dadrunter:
-# quadrieren = lambda num: num * num
-# print("Quadrat von 4 (Lambda-Funktion):", quadrieren(4))
+# Lambda-Funktion -> quasi dasselbe wie das dadrunter:
+quadrieren = lambda num: num * num
+print("Quadrat von 4 (Lambda-Funktion):", quadrieren(4))
 
 # def quadrieren(num):
 #     return num * num
 # print("Quadrat von 4 (allgemeine Funktion):", quadrieren(4))
 
+# Eine Lambda-Funktion in Python ist eine anonyme, kurze Funktion, die direkt definiert wird, 
+# ohne ihr einen Namen zu geben (obwohl man einen Namen zuweisen kann). Sie wird mit dem Schlüsselwort lambda erstellt.
 
-# filter (Liste mit Bedingung filtern)
-gefilterte_zahlen = list(filter(lambda num: num > 3, zahlen_liste))
-print("Gefilterte Zahlen > 3:", gefilterte_zahlen)
+# Aufbau einer Lambda-Funktion:
+# lambda argumente: ausdruck
+# argumente: Die Eingabeparameter der Funktion (wie in einer normalen Funktion).
+# ausdruck: Ein einzelner Ausdruck, der das Ergebnis liefert. Es gibt kein return-Schlüsselwort, da das Ergebnis automatisch zurückgegeben wird.
+
+
+# # filter (Liste mit Bedingung filtern)
+# gefilterte_zahlen = list(filter(lambda num: num > 3, zahlen_liste))
+# print("Gefilterte Zahlen > 3:", gefilterte_zahlen)
 
 # # Eigene Fehler mit raise
 # def check_positive(value):
