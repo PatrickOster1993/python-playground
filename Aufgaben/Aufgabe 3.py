@@ -6,36 +6,42 @@
 
 ##############################
 # FizzBuzz mit Modulo-Operator
-# for zahl in range(1, 101):
-#     if zahl % 3 == 0 and zahl % 5 == 0:
-#         print("FizzBuzz")
-#     elif zahl % 3 == 0:
-#         print("Fizz")
-#     elif zahl % 5 == 0:
-#         print("Buzz")
-#     else:
-#         print(zahl)
-
-###############################
-# FizzBuzz ohne Modulo-Operator
-zähler_3 = 0
-zähler_5 = 0
+übrige_zahlen = []
 
 for zahl in range(1, 101):
-    zähler_3 += 1
-    zähler_5 += 1
+    if zahl % 3 == 0 and zahl % 5 == 0:
+        print("FizzBuzz")
+    elif zahl % 3 == 0:
+        print("Fizz")
+    elif zahl % 5 == 0:
+        print("Buzz")
+    else:
+        print(zahl)
+        übrige_zahlen.append(zahl)
+
+print("Zahlen, die weder durch 3 noch durch 5 teilbar sind:", übrige_zahlen)
+
+
+# ###############################
+# # FizzBuzz ohne Modulo-Operator
+# zähler_3 = 0
+# zähler_5 = 0
+
+# for zahl in range(1, 101):
+#     zähler_3 += 1
+#     zähler_5 += 1
     
-    ausgabe = ""
+#     ausgabe = ""
     
-    if zähler_3 == 3:
-        ausgabe += "Fizz"
-        zähler_3 = 0  
+#     if zähler_3 == 3:
+#         ausgabe += "Fizz"
+#         zähler_3 = 0  
     
-    if zähler_5 == 5:
-        ausgabe += "Buzz"
-        zähler_5 = 0  
+#     if zähler_5 == 5:
+#         ausgabe += "Buzz"
+#         zähler_5 = 0  
     
-    if not ausgabe:
-        ausgabe = str(zahl)
+#     if not ausgabe:
+#         ausgabe = str(zahl)
     
-    print(ausgabe)
+#     print(ausgabe)

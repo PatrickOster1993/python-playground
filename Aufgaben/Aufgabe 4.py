@@ -29,3 +29,13 @@ with open("snake.txt", "w") as file:
     file.write(modified_text)
 
 print("Text wurde erfolgreich bearbeitet und in 'snake.txt' gespeichert.")
+
+with open("snake.txt", "r") as file:
+    content = file.read()
+
+content = content.replace("SNAKE_WAS_HERE", ".")
+
+with open("snake.txt", "w") as file:
+    file.write(content)
+
+print("Alle 'SNAKE_WAS_HERE' wurden durch '.' ersetzt und in 'snake.txt' gespeichert.")
