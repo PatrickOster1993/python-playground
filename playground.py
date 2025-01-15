@@ -2,6 +2,7 @@ print("##################")
 print("### Playground ###")
 print("##################")
 
+test = 3
 # ============================
 # Anfänger
 # ============================
@@ -197,9 +198,9 @@ with open("example.txt", "r") as file:
     content = file.read()
 print("Inhalt der Datei:", content)
 
-# ============================
-# Experten (nicht erforderlich)
-# ============================
+# =====================================
+# Experten (vorerst nicht erforderlich)
+# =====================================
 
 # List Comprehension
 verdoppelte_werte = [num * 2 for num in zahlen_liste]
