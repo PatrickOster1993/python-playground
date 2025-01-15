@@ -1,33 +1,41 @@
-# ### Aufgabe 4
-# Schreiben Sie eine Funktion, die Ihnen einen längeren Text (z. B. die im heutigen Unterricht erlernten Themen) über die Konsole einliest, jeden **"." (Punkt)** durch **"SNAKE_WAS_HERE"** ersetzt und den bearbeiteten Text dann in einer **snake.txt** abspeichert.
+# Aufgabe 4: Einfache Kalkulation
+# Der Benutzer gibt zwei Zahlen ein und wählt eine Operation (Addition, Subtraktion, Multiplikation, Division).
 
-# > *Hinweis*: Überlegen Sie sich eine sinnvolle Möglichkeit, wie Sie auch Texte über mehrere Zeilen eingeben können!
+print("Wählen Sie eine Operation:")
+print("1: Addition")
+print("2: Subtraktion")
+print("3: Multiplikation")
+print("4: Division")
+wahl = input("Bitte wählen Sie 1, 2, 3 oder 4:")
 
-# > **Anmerkung**: Geben Sie das Ergebnis bitte als Antwortsatz aus!
+# Exception-Handling für die Wahl der Operation
+while wahl not in ["1", "2", "3", "4"]:
+    print("Ungültige Eingabe. Bitte wählen Sie 1, 2, 3 oder 4.")
+    wahl = input("Bitte wählen Sie 1, 2, 3 oder 4:")
 
-# > **Beispiel**:
-# > ```
-# > Bitte geben Sie einen Text ein:
-# > Hallo. Mein Name ist Snake. Ich bin ein Python.
-# > ```
-# > ```
-# > Der bearbeitete Text wurde in der Datei „snake.txt“ gespeichert.
-# > ```
-# > **snake.txt**:
-# > ```
-# > HalloSNAKE_WAS_HERE Mein Name ist SnakeSNAKE_WAS_HERE Ich bin ein PythonSNAKE_WAS_HERE
-# > ```
-#
-# Funktion zum Ersetzen von Punkten
-def ersetze_punkte(text):
-    return text.replace(".", "SNAKE_WAS_HERE")
+# Eingabe der Zahlen
+while True:
+    try:
+        zahl1 = float(input("Bitte geben Sie die erste Zahl ein:"))
+        zahl2 = float(input("Bitte geben Sie die zweite Zahl ein:"))
+        break
+    except ValueError:
+        print("Bitte geben Sie gültige Zahlen ein.")
 
-print("Aufgabe 4") # Ausgabe des Titels der Aufgabe
-print("Bitte geben Sie einen längeren Text ein:")
-
-text = input() # Eingabe des Textes
-text = ersetze_punkte(text) # Ersetzen von Punkten
-with open("snake.txt", "w") as file: # Öffnen der Datei
-    file.write(text) # Schreiben des bearbeiteten Textes in die Datei
-print("Der bearbeitete Text wurde in der Datei „snake.txt“ gespeichert.") # Ausgabe des Erfolgs
-# Ende des Programms
+# Durchführung der gewählten Operation
+if wahl == "1":
+    ergebnis = zahl1 + zahl2
+    operation = "Addition"
+elif wahl == "2":
+    ergebnis = zahl1 - zahl2
+    operation = "Subtraktion"
+elif wahl == "3":
+    ergebnis = zahl1 * zahl2
+    operation = "Multiplikation"
+else:
+    if zahl2 == 0:
+        print("Division durch Null ist nicht erlaubt.")
+    else:
+        ergebnis = zahl1 / zahl2
+        operation = "Division"
+        print(f"Das Ergebnis der {operation} von {zahl1} und {zahl2} ist {ergebnis}.")

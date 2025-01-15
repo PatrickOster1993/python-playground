@@ -1,18 +1,26 @@
-# ### Aufgabe 3
-# Implementieren Sie das klassische **FizzBuzz-Spiel**. Schreiben Sie hierzu ein Programm, das die Zahlen von 1 bis 100 ausgibt, aber für Vielfache von 3 soll es **„Fizz“** ausgeben, für Vielfache von 5 **„Buzz“** und für Vielfache von sowohl 3 als auch 5 **„FizzBuzz“**.
+# Aufgabe 3: Berechnung der Fakultät
+# Der Benutzer gibt eine Zahl ein, und das Programm berechnet die Fakultät unter Verwendung von Exception-Handling.
 
-# > **Tipp**: Wie wäre es mit dem Modulo-Operator?
+def berechne_fakultaet(n):
+    if n < 0:
+        raise ValueError("Die Fakultät ist für negative Zahlen nicht definiert.")
+    elif n == 0:
+        return 1
+    else:
+        fakultaet = 1
+        for i in range(1, n + 1):
+            fakultaet *= i
+        return fakultaet
 
-# > **Anmerkung**: Geben Sie das Ergebnis bitte als Antwortsatz aus!
+while True:
+    try:
+        zahl = int(input("Bitte geben Sie eine positive ganze Zahl ein:"))
+        if zahl < 0:
+            print("Bitte eine positive Zahl eingeben.")
+        else:
+            break
+    except ValueError:
+        print("Bitte geben Sie eine gültige ganze Zahl ein.")
 
-print("Aufgabe 3") # Ausgabe des Titels der Aufgabe
-for i in range(1, 101): # Schleife von 1 bis 100
-    if i % 3 == 0 and i % 5 == 0: # Wenn i durch 3 und 5 teilbar ist
-        print("FizzBuzz") # Ausgabe von "FizzBuzz"
-    elif i % 3 == 0: # Wenn i durch 3 teilbar ist
-        print("Fizz") # Ausgabe von "Fizz"
-    elif i % 5 == 0: # Wenn i durch 5 teilbar ist
-        print("Buzz") # Ausgabe von "Buzz"
-    else: # Wenn i weder durch 3 noch durch 5 teilbar ist
-        print(i) # Ausgabe von i
-# Ende des Programms
+resultat = berechne_fakultaet(zahl)
+print(f"Die Fakultät von {zahl} ist {resultat}.")

@@ -1,14 +1,29 @@
-# ### Aufgabe 2
-# Schreiben Sie ein Programm, das eine Temperatur in **Celsius** in **Fahrenheit** umrechnet und dann anschließend das Ergebnis in der Konsole ausgibt. Die Umrechnungsformel lautet wie folgt: `F = 1.8 * C + 32`
+# Aufgabe 2: Temperaturumrechnung
+# Der Benutzer kann entscheiden, ob er von Celsius nach Fahrenheit oder umgekehrt umrechnen möchte.
 
-# mit F: Temperatur in **Fahrenheit**;
-# sowie C: Temperatur in **Celsius**
+print("Wählen Sie die Umrechnung:")
+print("1: Celsius nach Fahrenheit")
+print("2: Fahrenheit nach Celsius")
+wahl = input("Bitte wählen Sie 1 oder 2:")
 
-# > **Anmerkung**: Geben Sie das Ergebnis bitte als Antwortsatz aus!
+# Exception-Handling für die Eingabe der Wahl
+while wahl not in ["1", "2"]:
+    print("Ungültige Eingabe. Bitte wählen Sie 1 oder 2.")
+    wahl = input("Bitte wählen Sie 1 oder 2:")
 
-print("Aufgabe 2")
-print("Bitte geben Sie die Temperatur in Celsius ein.")
-print("Temperatur in Celsius:")
-celsius = float(input())
-fahrenheit = 1.8 * celsius + 32
-print("Die Temperatur in Fahrenheit beträgt " + str(fahrenheit) + " Grad Fahrenheit.")
+# Temperaturabfrage
+while True:
+    try:
+        temperatur = float(input("Bitte geben Sie die Temperatur ein:"))
+        break
+    except ValueError:
+        print("Bitte geben Sie eine gültige Zahl für die Temperatur ein.")
+
+if wahl == "1":
+    # Umrechnung von Celsius nach Fahrenheit
+    fahrenheit = (temperatur * 9/5) + 32
+    print(f"{temperatur} °C sind {fahrenheit} °F")
+else:
+    # Umrechnung von Fahrenheit nach Celsius
+    celsius = (temperatur - 32) * 5/9
+    print(f"{temperatur} °F sind {celsius} °C")
