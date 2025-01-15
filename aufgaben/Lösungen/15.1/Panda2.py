@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import tabulate
-
+import matplotlib.pyplot as plt
 
 print(pd.__version__)
 tempdata = {
@@ -10,4 +10,17 @@ tempdata = {
 }
 
 temp = pd.DataFrame(tempdata)
-print(tabulate.tabulate(temp, headers='keys', tablefmt='grid'))
+
+plt.plot(temp["Tage"], temp["Temperaturen"], marker='*', linestyle='-', color='black', label='Temperature')
+
+
+plt.xlabel("Day of the Week")
+plt.ylabel("Temperature (°C)")
+plt.title("Temperature Variation Over the Week")
+
+# Toon de legenda
+plt.legend()
+
+# Toon het diagram
+plt.grid(True)  # Optioneel: raster toevoegen
+plt.show()
