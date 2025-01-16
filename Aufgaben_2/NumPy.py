@@ -1,5 +1,5 @@
 """
-### 1. NumPy:
+### 1. NumPy: https://numpy.org/doc/2.2/user/quickstart.html
 
 - Erstelle ein NumPy-Array mit den Temperaturen (in °C) der Woche: `[12, 15, 14, 10, 9, 13, 11]`.
 

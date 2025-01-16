@@ -1,5 +1,5 @@
 """
-### 2. Pandas:
+### 2. Pandas: https://pandas.pydata.org/docs/index.html
 - Erstelle ein Pandas-DataFrame mit zwei Spalten:
 -  **Tag**: Die Wochentage ("Montag", "Dienstag", "Mittwoch ...).
 -  **Temperatur**: Die oben erstellten Temperaturen.

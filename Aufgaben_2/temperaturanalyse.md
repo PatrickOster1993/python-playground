@@ -14,7 +14,7 @@ Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysiere
 
   
 
-### 1. NumPy:
+### 1. NumPy: https://numpy.org/doc/2.2/user/quickstart.html
 
 - Erstelle ein NumPy-Array mit den Temperaturen (in °C) der Woche: `[12, 15, 14, 10, 9, 13, 11]`.
 
@@ -32,7 +32,7 @@ Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysiere
 
   
 
-### 2. Pandas:
+### 2. Pandas: https://pandas.pydata.org/docs/index.html
 
 - Erstelle ein Pandas-DataFrame mit zwei Spalten:
 
@@ -48,7 +48,20 @@ Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysiere
 
   
 
-### 3. Matplotlib:
+### 3. Matplotlib: https://matplotlib.org/
+
+- Erstelle ein einfaches Liniendiagramm, das die Temperatur über die Tage darstellt.
+
+- Beschrifte die Achsen:
+
+-  **x-Achse**: Wochentage.
+
+-  **y-Achse**: Temperatur (°C).
+
+- Gib dem Diagramm einen Titel, z. B. "Temperaturen der Woche".
+
+- Füge eine horizontale Linie in das Diagramm ein, die den Durchschnitt der Temperaturen darstellt.
+
 
 - Erstelle ein einfaches Liniendiagramm, das die Temperatur über die Tage darstellt.
 
