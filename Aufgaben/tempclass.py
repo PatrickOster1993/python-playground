@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 
 class TemperaturAnalyse:
+    ### Konstruktor ###
     def __init__(self, temperatures, wochentage):
         """
         Initialisiert die Temperaturanalyse mit den gegebenen Temperaturen und Wochentagen.
