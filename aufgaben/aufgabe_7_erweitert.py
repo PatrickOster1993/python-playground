@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
+
 former_temperature = np.random.uniform(low=9, high=17, size=(10, 7))
 
 # Aktuelle Temperatur (bis einschl. Donnerstag)
@@ -50,3 +52,5 @@ plt.grid(axis='y', linewidth=0.5, alpha=0.25)
 
 # Diagramm anzeigen
 plt.show()
+
+

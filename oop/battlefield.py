@@ -3,6 +3,7 @@ from klasse import Krieger
 # Beispiel: Erstellen von zwei Kriegern und ein Kampf
 krieger1 = Krieger(name="Herbert", lebenspunkte=100, angriffskraft=20, ruestung=10)
 krieger2 = Krieger(name="Maximilian", lebenspunkte=80, angriffskraft=25, ruestung=15)
+krieger3 = Krieger()
 
 # Krieger 1 greift Krieger 2 an
 krieger1.angreifen(gegner=krieger2)
