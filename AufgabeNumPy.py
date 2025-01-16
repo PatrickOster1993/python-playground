@@ -6,7 +6,7 @@
 #    die durchschnittliche Temperatur,
 #    die maximale Temperatur,
 #    die minimale Temperatur.
-
+#https://numpy.org/doc/stable/
 
 import numpy as np
 
