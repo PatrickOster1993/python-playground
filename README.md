@@ -41,3 +41,7 @@ Machen Sie sich bitte mit den Modulen **NumPy**, **Pandas** sowie **Matplotlib**
 
 ### Aufgabe 7
 > siehe **temperaturanalyse.md**
+
+### Aufgabe 8
+Lagern Sie unsere aktuelle Implementierung der **Temperaturanalyse** in einer Klasse aus!
+> Anmerkung: Überlegen Sie sich genau, welche Methoden und welche Attribute wir benötigen!
