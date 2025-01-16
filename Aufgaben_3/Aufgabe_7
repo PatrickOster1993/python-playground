@@ -1,0 +1,53 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Temperaturdaten der letzten 10 Kalenderwochen (10x7 Matrix)
+temperature_matrix = np.array([
+    [25, 28, 27, 23, 20, 22, 24],  # Woche 1
+    [21, 29, 25, 20, 18, 23, 26],  # Woche 2
+    [19, 24, 28, 21, 22, 27, 25],  # Woche 3
+    [26, 30, 22, 24, 20, 23, 21],  # Woche 4
+    [23, 22, 24, 26, 28, 20, 22],  # Woche 5
+    [20, 27, 23, 25, 29, 28, 24],  # Woche 6
+    [22, 24, 26, 20, 23, 25, 27],  # Woche 7
+    [24, 23, 21, 27, 25, 29, 22],  # Woche 8
+    [28, 26, 24, 23, 22, 21, 23],  # Woche 9
+    [27, 25, 22, 21, 24, 23, 26]   # Woche 10
+])
+
+# Durchschnittswerte pro Tag (Mo-So)
+weekly_mean = np.mean(temperature_matrix, axis=0)
+
+# Höchst- und Tiefsttemperatur über alle 10 Wochen
+temp_max = np.max(temperature_matrix)
+temp_min = np.min(temperature_matrix)
+
+# Ausgabe der Ergebnisse
+print("Durchschnittstemperaturen für jeden Wochentag:")
+print(weekly_mean)
+print(f"Höchsttemperatur über 10 Wochen: {temp_max}°C")
+print(f"Tiefsttemperatur über 10 Wochen: {temp_min}°C")
+
+# Plotten der Daten
+wochentage = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+plt.style.use('dark_background')
+plt.figure()
+
+# Durchschnittswerte plotten
+plt.plot(wochentage, weekly_mean, label='Durchschnitt (letzte 10 Wochen)', color='#ABE4F9')
+
+# Höchst- und Tiefsttemperatur als horizontale Linien einzeichnen
+plt.axhline(y=temp_max, color='#FF5733', linestyle='--', label='Höchsttemperatur')
+plt.axhline(y=temp_min, color='#33FF57', linestyle='--', label='Tiefsttemperatur')
+
+# Achsenbeschriftung
+plt.xlabel("Wochentag")
+plt.ylabel("Temperatur (°C)")
+plt.title("Temperaturanalyse und Vorhersage")
+plt.legend()
+
+# Gitternetz hinzufügen
+plt.grid(axis='y', linewidth=0.5, alpha=0.25)
+
+# Diagramm anzeigen
+plt.show()
