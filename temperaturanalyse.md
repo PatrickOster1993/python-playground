@@ -1,18 +1,9 @@
 # Übungsaufgabe: Temperaturanalyse
 
-  
-
 Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysieren. Schreibe ein Python-Skript, das die folgenden Aufgaben erfüllt:
 
-  
-
-
-
-  
 
 ## Aufgabenstellung
-
-  
 
 ### 1. NumPy:
 
@@ -26,11 +17,6 @@ Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysiere
 
 - die minimale Temperatur.
 
-  
-
----
-
-  
 
 ### 2. Pandas:
 
@@ -42,11 +28,6 @@ Du bist ein Wetterforscher und möchtest die Temperaturen einer Woche analysiere
 
 - Gib die Tabelle in der Konsole aus.
 
-  
-
----
-
-  
 
 ### 3. Matplotlib:
 
