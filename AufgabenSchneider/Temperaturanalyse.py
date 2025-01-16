@@ -57,6 +57,6 @@ plt.ylabel("Temperatur (°C)")
 plt.legend()  # Legende anzeigen
 plt.grid(True, linestyle='--', alpha=0.5)  # Rasterlinien hinzufügen
 
-# Diagramm anzeigen
+Diagramm anzeigen
 plt.tight_layout()  # Layout anpassen
 plt.show()

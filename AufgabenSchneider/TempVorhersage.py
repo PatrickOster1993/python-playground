@@ -16,12 +16,16 @@ KW10 = np.random.randint(-10, 35, 7)
 Temp10W = np.vstack([KW1, KW2, KW3, KW4, KW5, KW6, KW7, KW8, KW9, KW10])
 tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
 
-# df = pd.DataFrame({
-#     "Tag": tage,
-#     "Temperatur": Temp10W
-# })
+df = pd.DataFrame(Temp10W, columns= tage, index=[f"KW{i+1}" for i in range(10)])
 
-# print(df)
-durchschnittTemp = Temp10W.mean(axis=0)
+durchschnittTemp = df.mean(axis=0)
+max_Temp = df.max(axis=0)
+min_Temp = df.min(axis=0)
+print(df)
+print(f"Durchschnittstemperatur: {durchschnittTemp}")
+print(f"Max.Temp:{max_Temp}")
+print(f"Min.Temp:{min_Temp}")
 
-print(durchschnittTemp)
+
+plt.figure(figsize=(8,5)) #Größe des Diagramms
+plt.plot(tage, Temp10W, marker ='o', label='Temperatur', color='blue')
