@@ -30,6 +30,7 @@ Stellen wir uns vor, wir bauen ein Spiel, in dem Krieger gegeneinander kämpfen.
 +--------------------------+
 |        Krieger            |
 +--------------------------+
+| - name: String            |
 | - lebenspunkte: int       |
 | - angriffskraft: int      |
 | - ruestung: int           |
