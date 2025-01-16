@@ -198,9 +198,9 @@ while count < 3:
 #     content = file.read()
 # print("Inhalt der Datei:", content)
 
-# # ============================
-# # Experten (nicht erforderlich)
-# # ============================
+# =====================================
+# Experten (vorerst nicht erforderlich)
+# =====================================
 
 # # List Comprehension
 # verdoppelte_werte = [num * 2 for num in zahlen_liste]
@@ -258,7 +258,7 @@ while count < 3:
 #     for i in range(5):
 #         yield i
 
-# for zahl in zahlen_generator():
-#     print("Generator-Zahl:", zahl)
+for zahl in zahlen_generator():
+    print("Generator-Zahl:", zahl)
 
-# # Wichtige und häufig verwendete Libs in Python (folgt)
+# Wichtige und häufig verwendete Libs in Python (folgt)
