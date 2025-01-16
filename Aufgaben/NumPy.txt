@@ -1,5 +1,6 @@
 Wofür wird NumPy genutzt?
-NumPy (Numerical Python) ist eine leistungsstarke Bibliothek in Python, die für wissenschaftliche Berechnungen und Datenverarbeitung verwendet wird. Sie wird oft in den Bereichen Datenanalyse, Maschinelles Lernen, Statistik, Bildverarbeitung und Simulation eingesetzt.
+NumPy (Numerical Python) ist eine leistungsstarke Bibliothek in Python, die für wissenschaftliche Berechnungen und Datenverarbeitung verwendet wird. 
+Sie wird oft in den Bereichen Datenanalyse, Maschinelles Lernen, Statistik, Bildverarbeitung und Simulation eingesetzt.
 
 Vorteile von NumPy:
 Effiziente Array-Operationen: NumPy bietet mehrdimensionale Arrays (ähnlich wie Matrizen), die wesentlich schneller und effizienter sind als Standard-Python-Listen.
