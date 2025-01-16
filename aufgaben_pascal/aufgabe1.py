@@ -4,13 +4,15 @@
 
 # z. B.: „Hallo Max, du bist 25 Jahre alt und dein Lieblingsessen ist Pizza.“
 
+try:
+    name = input("Wie heißt du?")
+    age = input("Wie alt bist du?")
+    fav_food = input("Was ist dein Lieblingsessen?")
 
-name = input("Wie heißt du?")
-age = input("Wie alt bist du?")
-fav_food = input("Was ist dein Lieblingsessen?")
+    print(f"Hallo {name}, du bist {age} Jahre alt und dein Lieblingsessen ist {fav_food}.")
 
-print(f"Hallo {name}, du bist {age} Jahre alt und dein Lieblingsessen ist {fav_food}.")
-
+except:
+    print("Ein Fehler ist aufgetreten.")
 
 
 

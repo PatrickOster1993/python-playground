@@ -50,3 +50,5 @@ plt.grid(axis='y', linewidth=0.5, alpha=0.25)
 
 # Diagramm anzeigen
 plt.show()
+
+print(former_temperature)

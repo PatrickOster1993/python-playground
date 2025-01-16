@@ -7,24 +7,20 @@ def fahrenheit_to_celsius(fahrenheit):
 def celsius_to_fahrenheit(celsius):
     return 1.8 * celsius + 32
 
-choose = input("Wählen Sie eine Option: \n1. Fahrenheit zu Celsius \n2. Celsius zu Fahrenheit \n")
+try:
+    choose = input("Wählen Sie eine Option: \n1. Fahrenheit zu Celsius \n2. Celsius zu Fahrenheit \n")
 
-if choose == "1":
-    fahrenheit = float(input("Bitte geben Sie die Temperatur in Fahrenheit ein: "))
-    celsius = fahrenheit_to_celsius(fahrenheit)
-    print(f"Die Temperatur in Celsius beträgt: {celsius:.2f} Grad.")
-elif choose == "2":
-    celsius = float(input("Bitte geben Sie die Temperatur in Celsius ein: "))
-    fahrenheit = celsius_to_fahrenheit(celsius)
-    print(f"Die Temperatur in Fahrenheit beträgt: {fahrenheit:.2f} Grad.")
+    if choose == "1":
+        fahrenheit = float(input("Bitte geben Sie die Temperatur in Fahrenheit ein: "))
+        celsius = fahrenheit_to_celsius(fahrenheit)
+        print(f"Die Temperatur in Celsius beträgt: {celsius:.2f} Grad.")
+    elif choose == "2":
+        celsius = float(input("Bitte geben Sie die Temperatur in Celsius ein: "))
+        fahrenheit = celsius_to_fahrenheit(celsius)
+        print(f"Die Temperatur in Fahrenheit beträgt: {fahrenheit:.2f} Grad.")
 
-
-
-
-
-
-
-
+except ValueError:
+    print("Fehler: Bitte geben Sie eine gültige Zahl ein.")
 
 
 
