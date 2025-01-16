@@ -3,21 +3,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Analyse der Temperaturen
-temperatures = np.array([12, 15, 14, 10, 9, 13, 11])
+temperatures = np.array([12, 15.13, 14, 10, 9.11, 13, 11])
 
 # Statistische Berechnungen
-mean = np.mean(temperatures)
-max_temp = np.max(temperatures)
-min_temp = np.min(temperatures)
+mean = float(np.mean(temperatures))
+max_temp = float(np.max(temperatures))
+min_temp = float(np.min(temperatures))
 
 # Konsolenausgaben
-print(f"Durchschnittliche Temperatur: {mean:}°C")
-print(f"Max. Temperatur: {max_temp}°C")
-print(f"Min. Temperatur: {min_temp}°C")
+print(f"Durchschnittliche Temperatur: {round(mean, 2)}°C")
+print(f"Max. Temperatur: {round(max_temp, 2)}°C")
+print(f"Min. Temperatur: {round(min_temp, 2)}°C")
 
 # DataFrame erstellen
 wochentage = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
-df = pd.DataFrame({"Tag": wochentage, "Temperatur (°C)": temperatures})
+df_dict = {
+    "Tag": wochentage,
+    "Temperatur (°C)": temperatures
+}
+df = pd.DataFrame(df_dict)
 
 # DataFrame in Konsole ausgeben
 print("\nDataFrame:")
@@ -25,11 +29,11 @@ print(df)
 
 # Plotten
 plt.style.use('dark_background')
-plt.figure(figsize=(8, 5))
-plt.plot(wochentage, temperatures, marker='o', label='Temperatur', color='#F9C0AB')
+plt.figure()
+plt.plot(df["Tag"], df["Temperatur (°C)"], label='Temperatur', color='#F9C0AB')
 
 # Durchschnitt als horizontale Linie einzeichnen
-plt.axhline(y=mean, color='#ABE4F9', linestyle=':', label=f'Durchschnittstemperatur')
+plt.axhline(y=mean, color='#ABE4F9', linestyle=':', label='Durchschnittstemperatur')
 
 # Achsenbeschriftung
 plt.xlabel("Wochentag")
