@@ -2,6 +2,7 @@ print("##################")
 print("### Playground ###")
 print("##################")
 
+test = 3
 # ============================
 # Anfänger
 # ============================
@@ -197,9 +198,9 @@ with open("example.txt", "r") as file:
     content = file.read()
 print("Inhalt der Datei:", content)
 
-# ============================
-# Experten (nicht erforderlich)
-# ============================
+# =====================================
+# Experten
+# =====================================
 
 # List Comprehension
 verdoppelte_werte = [num * 2 for num in zahlen_liste]
@@ -259,5 +260,3 @@ def zahlen_generator():
 
 for zahl in zahlen_generator():
     print("Generator-Zahl:", zahl)
-
-# Wichtige und häufig verwendete Libs in Python (folgt)
