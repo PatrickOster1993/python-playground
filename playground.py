@@ -199,7 +199,7 @@ with open("example.txt", "r") as file:
 print("Inhalt der Datei:", content)
 
 # =====================================
-# Experten (vorerst nicht erforderlich)
+# Experten
 # =====================================
 
 # List Comprehension
@@ -260,5 +260,3 @@ def zahlen_generator():
 
 for zahl in zahlen_generator():
     print("Generator-Zahl:", zahl)
-
-# Wichtige und häufig verwendete Libs in Python (folgt)
