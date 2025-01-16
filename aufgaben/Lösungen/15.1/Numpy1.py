@@ -1,6 +1,6 @@
 import numpy as np
 
-tempList = [28, 30, 31.5, 27, 26, 32, 28, 29, 28, 31]
+tempList = np.array([12, 15, 14, 10, 9, 13, 11])
 
 avgTemp =  np.mean(tempList)
 maxTemp = np.max(tempList)
