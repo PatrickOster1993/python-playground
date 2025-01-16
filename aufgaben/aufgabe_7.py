@@ -46,5 +46,3 @@ plt.grid(axis='y', linewidth=0.5, alpha=0.25)
 
 # Diagramm anzeigen
 plt.show()
-
-# Frage: Was müssten wir ändern, damit das Diagramm als Art "Vorhersagemodell gültig wäre? (= selbständige Aufgabe)
