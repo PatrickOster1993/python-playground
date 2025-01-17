@@ -60,10 +60,3 @@ class Warrior(Character):
 class Mage(Character):
     def __init__(self, name, hp, mp, atk, defense, magicattack, magicdefense=0):
         super().__init__(name, hp, mp, atk, defense, magicattack, magicdefense)
-
-    def cast(self, gegner):
-        schaden = self.magicattack
-        gegner.hp = max(0, gegner.hp - schaden)
-        print(f"{self.name} zaubert und fügt {gegner.name} {schaden} Schaden zu!")
-        if gegner.hp == 0:
-            print(f"{gegner.name} wurde besiegt!")

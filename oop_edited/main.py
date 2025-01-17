@@ -11,7 +11,7 @@ if __name__ == "__main__":
     utils.show_map(map)
     
     # Erstelle Instanzen der Spielercharaktere
-    mete = player.Warrior("Mete", hp=100, atk=30, mp=0, defense=30, magicdefense=10)
+    mete = player.Warrior("Mete", hp=100, atk=30, mp=0, defense=0, magicdefense=10)
     pascal = player.Mage("Pascal", hp=80, atk=10, mp=100, defense=20, magicattack=30, magicdefense=15)
     
     # Erstelle eine Instanz des Gegners
