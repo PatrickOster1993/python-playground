@@ -19,13 +19,8 @@ print("Die niedrigste Temperatur beträgt: ", min_temp, "°C")
 print("Die maximale Temperatur beträgt: ", max_temp, "°C")
 print("Die durchschnittliche Temperatur beträgt: ", mean_temp, "°C")
 
-plt.plot(names, values, label="Tägliche Temperaturen", marker='o')
-
-plt.plot(names, [min_temp] * len(names), label=f"Min Temperatur: {min_temp}°C", linestyle='--', color='red')
-
-plt.plot(names, [max_temp] * len(names), label=f"Max Temperatur: {max_temp}°C", linestyle=':', color='green')
-
-plt.plot(names, [mean_temp] * len(names), label=f"Durchschnitt: {mean_temp}°C", linestyle='-', color='blue')
+plt.plot(names, values, label="Tägliche Temperaturen",)
+plt.axhline(max_temp, label="Maximale Temperatur")
 
 plt.legend()
 
