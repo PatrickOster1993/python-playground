@@ -1,6 +1,6 @@
-# import numpy as np
-# import pandas as pd
-# import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Analyse der Temperaturen
 temperatures = np.array([12, 15.13, 14, 10, 9.11, 13, 11])
