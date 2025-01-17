@@ -39,7 +39,11 @@ class Krieger:
     @property
     def ruestung(self):
         return self._ruestung
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> main
     @ruestung.setter
     def ruestung(self, wert):
         if wert < 0:
@@ -78,6 +82,7 @@ class Krieger:
         print("Lebenspunkte: ", self.lebenspunkte)
         print("Angriffskraft: ", self.angriffskraft)
         print("Rüstung: ", self.ruestung)
+<<<<<<< HEAD
         print(f"##########################################")
 
 
@@ -121,3 +126,6 @@ class Magier(Krieger):
         else:
             print(f"{self.name} hat nicht genug Mana, um zu zaubern!")
             print("#################################################")
+=======
+        print(f"##########################################")
+>>>>>>> main

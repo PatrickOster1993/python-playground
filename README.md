@@ -47,6 +47,9 @@ Machen Sie sich bitte mit den Modulen **NumPy**, **Pandas** sowie **Matplotlib**
 
 ### Aufgabe 7
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
 > siehe **temperaturanalyse.md**
 
 ### Aufgabe 8
@@ -56,7 +59,13 @@ Erweitern Sie das file **klasse.py** um weitere Klassen (z. B. **Magier**)... F�
 ### Aufgabe 9
 Lagern Sie unsere aktuelle Implementierung der **Temperaturanalyse** in einer Klasse aus!
 > Anmerkung: Überlegen Sie sich genau, welche Methoden und welche Attribute wir benötigen!
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
 > siehe **temperaturanalyse.md**
+>>>>>>> main
+=======
+
+### Aufgabe 10
+> siehe **rollenspiel.md**
 >>>>>>> main
