@@ -189,7 +189,7 @@ class Auto:
 		print("Auto fährt.")
 ```
   
-## 2. Aggregation
+### 2. Aggregation
 
 **Definition:**
 
@@ -199,7 +199,7 @@ Eine schwächere Beziehung, bei der das enthaltene Objekt unabhängig existieren
 
 ```python
 class Student:
-	def __init__(self, name):
+    def __init__(self, name):
 		self.name = name
 
 class Klassenzimmer:
