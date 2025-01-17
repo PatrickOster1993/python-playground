@@ -55,7 +55,7 @@ class TemperatureAnalysis:
 
         plt.xlabel("Wochentag", fontsize=12)
         plt.ylabel("Temperatur (°C)", fontsize=12)
-        plt.title(f"Temperaturvorhersage basierend auf den letzten {self.weeks} Wochen", fontsize=16)
+        plt.title(f"Temperaturvorhersage basierend auf den letzten {self.weeks} Jahren", fontsize=16)
 
         plt.legend()
         plt.grid(axis='y', linewidth=0.5, alpha=0.25)
@@ -68,8 +68,7 @@ class TemperatureAnalysis:
 #    Das Erzeugen eines Objekts einer Klasse wird als "Instanzierung" bezeichnet.
 #    Hier rufen wir den Konstruktor (`__init__`) auf, um die Klasse `TemperatureAnalysis`
 #    mit der Anzahl der Wochen (`weeks=52`) zu initialisieren.
-analyzer = TemperatureAnalysis(weeks=52) # nun können wir sogar komplexe Datentypen (list, dict, ...) aus unserem Objekt erstellen:)
-
+analyzer = TemperatureAnalysis(weeks=10) # nun können wir sogar komplexe Datentypen (list, dict, ...) aus unserem Objekt erstellen:)
 # 2. Attribute der Klasse (keine Logik dahinter, reine Datenspeicherung)
 #    Attribute wie `days` oder `formerTemperature` sind **normale Variablen**,
 #    die in der Klasse gespeichert werden und direkt ausgelesen werden können.

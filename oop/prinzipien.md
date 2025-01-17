@@ -7,7 +7,23 @@
 Vererbung ermöglicht einer Unterklasse, Eigenschaften und Methoden der Oberklasse zu erben und anzupassen.
 
 **Beispiel:**
-
+```plain
++-----------------------+
+|         Tier          |
++-----------------------+
+| + bewegen(): void     |
++-----------------------+
+          ▲
+          |
+  +-------+-------+
+  |               |
++-----------+   +------------+
+|   Hund    |   |   Katze    |
++-----------+   +------------+
+| + bellen():   | + miauen():|
+|   void        |   void     |
++-----------+   +------------+
+```
 ```python
 class Tier:
 	def bewegen(self):
@@ -35,7 +51,24 @@ Dies wird oft als "Information Hiding" bezeichnet, da die Implementierungsdetail
 Die Komplexität von Systemen reduzieren und eine klare Schnittstelle (Interface) bereitstellen, um Objekte oder Prozesse zu nutzen.
 
 ### Beispiel
-
+```plain
++---------------------------+
+|          Tier             |
++---------------------------+
+| + essen(): void           |
+| # bewegen(): abstract     |
++---------------------------+
+          ▲
+          |
+  +-------+--------+
+  |                |
++------------+   +-------------+
+|   Hund     |   |   Vogel     |
++------------+   +-------------+
+| + bewegen():   | + bewegen():|
+|   void     |   |   void      |
++------------+   +-------------+
+```
 ```python
 from abc import ABC, abstractmethod
 
@@ -81,9 +114,23 @@ Beispiel: `self._geheimnis`
 Beispiel: `self.__streng_geheim`
 
 ### Beispiel:
-
+```plain
++---------------------------+
+|        BankKonto          |
++---------------------------+
+| + blz: str                |
+| # bankCode: str           |
+| _ pin: str                |
++---------------------------+
+| + __init__(blz, pin):     |
+|   void                    |
+| + checkPin(eingabe):      |
+|   bool                    |
+| + zeigeBankcode():        |
+|   str                     |
++---------------------------+
+```
 ```python
-
 class BankKonto:
 	def __init__(self, blz, pin):
 		self.blz = blz # Öffentlich
@@ -128,7 +175,20 @@ Flexibilität erhöhen und allgemeine Algorithmen für verschiedene Typen nutzba
 ### Beispiel:
 
 #### a) Methodenüberschreibung mit Override
-
+```plain
++-----------------------+
+|         Tier          |
++-----------------------+
+| + bewegen(): void     |
++-----------------------+
+          ▲
+          |
++-----------------------+
+|        Katze          |
++-----------------------+
+| + bewegen(): void     |
++-----------------------+
+```
 ```python
 class Tier:
 	def bewegen(self):
@@ -151,7 +211,7 @@ print(rechner.addiere(1, 2))  # 3
 print(rechner.addiere(1, 2, 3, 4))  # 10
 ```
 
-## Weitere namhafte Prinzipien
+## Weitere namhafte Prinzipien (=SOLID)
 
 ### 1. Single Responsibility Principle (SRP)
 
@@ -161,7 +221,15 @@ Eine Klasse sollte nur eine Aufgabe haben. Das bedeutet, dass eine Klasse nur f�
 
 Klassen sollen offen für Erweiterung, aber geschlossen für Änderungen sein. Das bedeutet, dass das Verhalten einer Klasse durch Erweiterungen (z.B. Vererbung) angepasst werden kann, ohne dass der bestehende Code der Klasse geändert werden muss.
 
-### 3. Dependency Inversion Principle (DIP)
+### 3. Liskov Substitution Principle (LSP)
+
+Objekte einer Basisklasse sollten durch Objekte ihrer abgeleiteten Klassen ersetzt werden können, ohne dass sich das Verhalten des Programms ändert. Das bedeutet, dass eine Unterklasse die Erwartungen erfüllen muss, die an die Basisklasse gestellt werden, und keine zusätzlichen Anforderungen hinzufügen darf.
+
+### 4. Interface Segregation Principle (ISP)
+
+Es ist besser, viele kleine, spezifische Schnittstellen zu haben, die genau die Anforderungen einzelner Module erfüllen, als eine große, allgemeine Schnittstelle, die für alle Module genutzt wird. Klassen sollten keine Methoden implementieren müssen, die sie nicht benötigen.
+
+### 5. Dependency Inversion Principle (DIP)
 
 Höherwertige Module sollten nicht von niederen Modulen abhängen, sondern beide von Abstraktionen. Dies fördert die Entkopplung von Modulen und sorgt dafür, dass Änderungen an niedrigerwertigen Modulen die höherwertigen Module nicht beeinträchtigen.
 
@@ -174,7 +242,25 @@ Höherwertige Module sollten nicht von niederen Modulen abhängen, sondern beide
 Eine starke Beziehung, bei der das enthaltene Objekt vom übergeordneten Objekt vollständig kontrolliert wird. Wenn das übergeordnete Objekt zerstört wird, werden auch die enthaltenen Objekte zerstört.
 
 **Beispiel:**
-
+```plain
++---------------------------+
+|          Motor            |
++---------------------------+
+| + starten(): void         |
++---------------------------+
+          ▲
+          |
+    «uses»
+          |
++---------------------------+
+|          Auto             |
++---------------------------+
+| # motor: Motor            |
++---------------------------+
+| + __init__(): void        |
+| + fahren(): void          |
++---------------------------+
+```
 ```python
 class Motor:
 	def starten(self):
@@ -196,7 +282,29 @@ class Auto:
 Eine schwächere Beziehung, bei der das enthaltene Objekt unabhängig existieren kann. Das übergeordnete Objekt referenziert die enthaltenen Objekte, kontrolliert sie aber nicht vollständig.
 
 ### Beispiel:
+```plain
++---------------------------+
+|         Student           |
++---------------------------+
+| + name: str               |
++---------------------------+
+| + __init__(name): void    |
++---------------------------+
 
+              0..*
+          «contains»
+              ▲
+              |
++---------------------------+
+|      Klassenzimmer        |
++---------------------------+
+| + schueler: list[Student] |
++---------------------------+
+| + __init__(): void        |
+| + hinzufuegen(student):   |
+|   void                    |
++---------------------------+
+```
 ```python
 class Student:
     def __init__(self, name):
