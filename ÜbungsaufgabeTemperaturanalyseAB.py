@@ -21,7 +21,7 @@ print("Typ:", type(temperaturen_array))
 
 import pandas as pd
 
-# Beispieldaten für zwei Spalten: Name und Alter
+
 TempDaten = {
     "Tag": ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
     "Temperatur": [12, 15, 14, 10, 9, 13, 11]

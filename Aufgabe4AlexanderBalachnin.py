@@ -11,10 +11,10 @@ benutzer_input = input("Gib einen längeren Text ein:\n")
 # Funktion
 def SnakeErsatz():
     neuer_text = benutzer_input.replace(".", "SNAKE_WAS_HERE")
-    with open("Snake.txt", "W") as file:
+    with open("Snake.txt", "w") as file:
         file.write(neuer_text)
-        
-        
+
+SnakeErsatz()
 
 # Lesen
 with open("Snake.txt", "r") as file:
