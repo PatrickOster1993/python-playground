@@ -35,3 +35,20 @@ Schreiben Sie eine Funktion, die Ihnen einen längeren Text (z. B. die im heutig
 Innerhalb der **playground.py** befindet sich eine Codesequenz, unterhalb des Kommentars mit dem Titel "Experten (nicht erforderlich)". Versuchen Sie den Code selbständig nachzuvollziehen und machen Sie sich ggf. Notizen!
 
 > *Hinweis*: Die kreativsten Lösungen erlangen stets grenzenlose Ehre!
+
+### Aufgabe 6
+Machen Sie sich bitte mit den Modulen **NumPy**, **Pandas** sowie **Matplotlib** vertraut!
+
+### Aufgabe 7
+> siehe **temperaturanalyse.md**
+
+### Aufgabe 8
+Erweitern Sie das file **klasse.py** um weitere Klassen (z. B. **Magier**)... Fügen Sie den jeweiligen Klassen bei Bedarf weitere Attribute und Methoden hinzu.
+> Wie wäre es zum Beispiel mit der Methode **heilen()**?
+
+### Aufgabe 9
+Lagern Sie unsere aktuelle Implementierung der **Temperaturanalyse** in einer Klasse aus!
+> Anmerkung: Überlegen Sie sich genau, welche Methoden und welche Attribute wir benötigen!
+
+### Aufgabe 10
+> siehe **rollenspiel.md**
