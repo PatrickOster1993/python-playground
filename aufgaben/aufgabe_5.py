@@ -1,5 +1,5 @@
 # ============================
-# Experten (nicht erforderlich)
+# Experten
 # ============================
 
 zahlen_liste = [1, 2, 3, 4, 5]
@@ -37,6 +37,7 @@ operation = {
 }
 
 op = "add"
+
 result = operation[op](10, 5)
 print(f"Operation {op}: Ergebnis =", result)
 
