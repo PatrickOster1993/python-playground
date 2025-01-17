@@ -49,3 +49,6 @@ Erweitern Sie das file **klasse.py** um weitere Klassen (z. B. **Magier**)... F�
 ### Aufgabe 9
 Lagern Sie unsere aktuelle Implementierung der **Temperaturanalyse** in einer Klasse aus!
 > Anmerkung: Überlegen Sie sich genau, welche Methoden und welche Attribute wir benötigen!
+
+### Aufgabe 10
+> siehe **rollenspiel.md**
