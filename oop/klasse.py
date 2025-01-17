@@ -39,11 +39,7 @@ class Krieger:
     @property
     def ruestung(self):
         return self._ruestung
-<<<<<<< HEAD
-
-=======
     
->>>>>>> main
     @ruestung.setter
     def ruestung(self, wert):
         if wert < 0:
@@ -82,50 +78,4 @@ class Krieger:
         print("Lebenspunkte: ", self.lebenspunkte)
         print("Angriffskraft: ", self.angriffskraft)
         print("Rüstung: ", self.ruestung)
-<<<<<<< HEAD
         print(f"##########################################")
-
-
-class Magier(Krieger):
-    def __init__(self, name, lebenspunkte, angriffskraft, ruestung, mana):
-        """
-        Initialisiert einen Magier mit den Attributen der Klasse Krieger
-        und zusätzlich mit Mana.
-        """
-        # Auf den Konstruktor der Elternklasse zugreifen
-        super().__init__(name, lebenspunkte, angriffskraft, ruestung)
-        self.mana = mana  # Neues Attribut für Magier
-    
-    @property
-    def mana(self):
-        return self._mana
-
-    @mana.setter
-    def mana(self, wert):
-        if wert < 0:
-            print("Mana kann nicht negativ sein!")
-            print("############################")
-        else:
-            self._mana = wert
-
-    def zaubern(self, gegner):
-        """
-        Führt einen Zauberangriff aus, der Mana verbraucht und dem Gegner Schaden zufügt.
-        """
-        if self.mana >= 10:  # Beispiel: Jeder Zauber kostet 10 Mana
-            schaden = self.angriffskraft * 2 - gegner.ruestung  # Zauber richtet doppelten Schaden an
-            if schaden > 0:
-                gegner.lebenspunkte -= schaden
-                self.mana -= 10
-                print(f"{self.name} zaubert gegen {gegner.name} und fügt {schaden} Schaden zu!")
-                print(f"Verbleibendes Mana: {self.mana}")
-                print("###################################################")
-            else:
-                print(f"{self.name} zaubert gegen {gegner.name}, aber der Zauber war zu schwach!")
-                print("#########################################################################")
-        else:
-            print(f"{self.name} hat nicht genug Mana, um zu zaubern!")
-            print("#################################################")
-=======
-        print(f"##########################################")
->>>>>>> main
