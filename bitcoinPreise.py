@@ -95,10 +95,26 @@ ax.set_ylim(auto=True)
 ax.set_ylabel('Preis (USD)', fontsize=12)
 ax.yaxis.set_major_formatter('${x:1.2f}')
 
+# Matplotlib Backend für interaktive Anzeige setzen
+plt.switch_backend('TkAgg')
+
+# Diagramm-Einstellungen vor dem Anzeigen
+plt.ion()  # Interaktiver Modus
+plt.get_current_fig_manager().set_window_title('Bitcoin Preis Diagramm')
+
 try:
     print("Abrufen der Bitcoin-Preise...")
-    plt.show()
+    plt.show(block=True)
+    plt.pause(0.1)  # Kurze Pause für die Aktualisierung
+    print("Diagramm sollte jetzt sichtbar sein. Falls nicht, bitte prüfen:")
+    print("1. Ist Tkinter installiert? (pip install python-tk)")
+    print("2. Läuft das Programm in einer IDE, die Diagramme unterstützt?")
 except KeyboardInterrupt:
     print("Beendet durch Benutzer.")
 except Exception as e:
     print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
+    print("Mögliche Lösungen:")
+    print("- Tkinter installieren: pip install python-tk")
+    print("- Anderes Backend verwenden: plt.switch_backend('Qt5Agg')")
+    print("- In einer anderen Umgebung ausführen (z.B. Jupyter Notebook)")
+    raise
