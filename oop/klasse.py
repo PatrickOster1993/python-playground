@@ -39,7 +39,7 @@ class Krieger:
     @property
     def ruestung(self):
         return self._ruestung
-
+    
     @ruestung.setter
     def ruestung(self, wert):
         if wert < 0:
