@@ -284,3 +284,4 @@ class Klassenzimmer:
 | + name : str      |
 +-------------------+
 ```
+> **Tipp**: [Hier](https://refactoring.guru/design-patterns/catalog) finden Sie wertvolle, von echt smarten Dudes aus der Vergangenheit erstellte, für eine Vielzahl von bekannten Use-Cases anwendbare, Design-Pattern für Ihre SW-Architektur!
