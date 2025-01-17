@@ -2,9 +2,16 @@
 # print("### Playground ###")
 # print("##################")
 
+<<<<<<< HEAD
 # # ============================
 # # Anfänger
 # # ============================
+=======
+test = 3
+# ============================
+# Anfänger
+# ============================
+>>>>>>> main
 
 # # Einfacher Kommentar (1 Zeile)
 
@@ -197,9 +204,15 @@ print("Koordinaten:", koordinaten, "Datentyp:", type(koordinaten))
 #     content = file.read()
 # print("Inhalt der Datei:", content)
 
+<<<<<<< HEAD
 # # ============================
 # # Experten (nicht erforderlich)
 # # ============================
+=======
+# =====================================
+# Experten
+# =====================================
+>>>>>>> main
 
 # # List Comprehension
 # verdoppelte_werte = [num * 2 for num in zahlen_liste]
@@ -257,7 +270,12 @@ print("Koordinaten:", koordinaten, "Datentyp:", type(koordinaten))
 #     for i in range(5):
 #         yield i
 
+<<<<<<< HEAD
 # for zahl in zahlen_generator():
 #     print("Generator-Zahl:", zahl)
 
 # # Wichtige und häufig verwendete Libs in Python (folgt)
+=======
+for zahl in zahlen_generator():
+    print("Generator-Zahl:", zahl)
+>>>>>>> main
