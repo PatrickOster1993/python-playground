@@ -1,0 +1,43 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Temperaturdaten für 10 Wochen (Mo - So) erstellen
+np.random.seed(42)  # Zufällige Werte, aber reproduzierbar
+temperaturdaten = np.random.randint(-10, 35, (10, 7))  # Zufällige Temperaturen (-10 bis 34)
+
+# Wochentage
+wochentage = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+
+# 2. Durchschnittstemperaturen für jeden Wochentag über die letzten 10 Wochen
+durchschnitt_pro_tag = temperaturdaten.mean(axis=0)
+
+# 3. Hoch- und Tiefstand der Temperatur für jeden Wochentag
+hoechststand_pro_tag = temperaturdaten.max(axis=0)
+tiefstand_pro_tag = temperaturdaten.min(axis=0)
+
+# 4. Plot erstellen
+plt.figure(figsize=(10, 6))
+
+# Durchschnittstemperatur plotten
+plt.plot(wochentage, durchschnitt_pro_tag, label="Durchschnitt", marker="o")
+
+# Hoch- und Tiefstände plotten
+plt.fill_between(
+    wochentage,
+    tiefstand_pro_tag,
+    hoechststand_pro_tag,
+    color="lightblue",
+    alpha=0.4,
+    label="Spannweite (Tief- bis Höchststand)"
+)
+
+# 5. Diagramm verschönern
+plt.title("Temperaturdaten der letzten 10 Wochen", fontsize=16)
+plt.xlabel("Wochentage", fontsize=12)
+plt.ylabel("Temperatur (°C)", fontsize=12)
+plt.legend(fontsize=10)
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.tight_layout()
+
+# Diagramm anzeigen
+plt.show()
