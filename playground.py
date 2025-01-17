@@ -258,5 +258,5 @@ print("Koordinaten:", koordinaten, "Datentyp:", type(koordinaten))
 #     for i in range(5):
 #         yield i
 
-for zahl in zahlen_generator():
-    print("Generator-Zahl:", zahl)
+# for zahl in zahlen_generator():
+#     print("Generator-Zahl:", zahl)
