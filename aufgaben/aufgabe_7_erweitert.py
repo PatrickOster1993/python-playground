@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 former_temperature = np.random.uniform(low=9, high=17, size=(10, 7))
 
 # Aktuelle Temperatur (bis einschl. Donnerstag)
-current_temperature = np.random.uniform(10, 17, size=7)
+current_temperature = np.random.uniform(low=10, high=18, size=7)
 
 # Setze die letzten 3 Werte auf NaN, da Fr - So noch nicht eingetroffen!
 current_temperature[-3:] = np.nan
@@ -31,7 +31,7 @@ print(df)
 
 # Plotten
 plt.style.use('dark_background')
-plt.figure(figsize=(10, 6))
+plt.figure()
 plt.plot(df["Tag"], df["Durchschnittstemperatur (°C)"], label='Durchschnittstemperatur', color='#ABE4F9')
 plt.plot(df["Tag"], current_temperature, label='Aktuelle Woche', color='#F9E7AB')
 
