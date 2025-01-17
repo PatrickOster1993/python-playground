@@ -68,7 +68,7 @@ class TemperatureAnalysis:
 #    Das Erzeugen eines Objekts einer Klasse wird als "Instanzierung" bezeichnet.
 #    Hier rufen wir den Konstruktor (`__init__`) auf, um die Klasse `TemperatureAnalysis`
 #    mit der Anzahl der Wochen (`weeks=52`) zu initialisieren.
-analyzer = TemperatureAnalysis(weeks=52)
+analyzer = TemperatureAnalysis(weeks=52) # nun können wir sogar komplexe Datentypen (list, dict, ...) aus unserem Objekt erstellen:)
 
 # 2. Attribute der Klasse (keine Logik dahinter, reine Datenspeicherung)
 #    Attribute wie `days` oder `formerTemperature` sind **normale Variablen**,
@@ -78,7 +78,7 @@ days = analyzer.days  # Eine Liste der Wochentage ["Mo", "Di", "Mi", "Do", "Fr",
 weeks = analyzer.weeks  # Die Anzahl der Wochen, die für die Analyse herangezogen werden
 former_temps = analyzer.formerTemperature  # Eine Matrix mit Temperaturwerten der letzten Wochen
 
-print(f"Die Temperaturen von {days[0]} bis {days[-1]} der letzten {weeks} Kalenderwochen befinden sich als Matrix in former_temps!")
+print(f"Die Temperaturen von {days[0]} bis {days[-1]} der aktuellen KW für die letzten {weeks} Jahre befinden sich als Matrix in former_temps!")
 
 # 3. Properties (Props = Attribute mit Logik dahinter)
 #    Properties sind spezielle Attribute, die mit der `@property`-Dekoration erstellt werden.
