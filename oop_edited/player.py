@@ -19,9 +19,7 @@ class Character:
         schaden = self.magicattack
         gegner.hp = max(0, gegner.hp - schaden)
         print(f"{self.name} zaubert und fügt {gegner.name} {schaden} Schaden zu!")
-        if gegner.hp == 0:
-            print(f"{gegner.name} wurde besiegt!")
-            
+             
     def heilen(self, value):
         self.hp += value
         print(f"{self.name} hat sich um {value} Lebenspunkte geheilt.")
