@@ -68,4 +68,6 @@ Lagern Sie unsere aktuelle Implementierung der **Temperaturanalyse** in einer Kl
 
 ### Aufgabe 10
 > siehe **rollenspiel.md**
->>>>>>> main
+
+### Aufgabe 11
+> siehe **bibliotheksverwaltung.md**
