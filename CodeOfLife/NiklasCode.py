@@ -18,10 +18,10 @@ for z in range( zeilen ):
 
 
 def zeicheArray():
-    for zeilen_nr in range (zeilen):
-        for spalten_nr in range (spalten):
-            print( mein_array[zeilen_nr][spalten_nr] , end=" " )
-        print( ) # < in nächste Zeile gehen
+     for zeilen_nr in range (zeilen):
+         for spalten_nr in range (spalten):
+             print( mein_array[zeilen_nr][spalten_nr] , end=" " )
+         print( ) # < in nächste Zeile gehen
 
 
 
