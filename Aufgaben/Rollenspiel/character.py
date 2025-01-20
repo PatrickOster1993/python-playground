@@ -6,6 +6,7 @@
 
 
 from abc import ABC, abstractmethod
+import random
 
 class Character(ABC):
         def __init__(self, name: str, health_points: int, attack_power: int, armor: int):
@@ -27,3 +28,40 @@ class Character(ABC):
                         f"Armor: {self._armor}\n"
                 )
                 return status
+        
+class Mage(Character):
+    def __init__(self, name: str, health_points: int, attack_power: int, armor: int, mana: int):
+        super().__init__(name, health_points, attack_power, armor)
+        self._mana = mana
+
+    def attack(self, target):
+        if self._mana > 0:
+            damage = self._attack_power
+            self._mana -= 10  # Reduce mana by a fixed amount
+            print(f"{self._name} attacks {target._name} with magic for {damage} damage!")
+        else:
+            print(f"{self._name} has no mana left to attack!")
+
+    def cast_spell(self, target):
+        if self._mana >= 20:
+            damage = self._attack_power * 2
+            self._mana -= 20  # Reduce mana by a larger amount
+            print(f"{self._name} casts a powerful spell on {target._name} for {damage} damage!")
+        else:
+            print(f"{self._name} doesn't have enough mana to cast a spell!")
+
+class Rogue(Character):
+    def __init__(self, name: str, health_points: int, attack_power: int, armor: int, dexterity: int):
+        super().__init__(name, health_points, attack_power, armor)
+        self._dexterity = dexterity
+
+    def attack(self, target):
+        critical_hit = random.random() < 0.2  # 20% chance for a critical hit
+        damage = self._attack_power * 2 if critical_hit else self._attack_power
+        if critical_hit:
+            print(f"{self._name} lands a critical hit on {target._name} for {damage} damage!")
+        else:
+            print(f"{self._name} attacks {target._name} for {damage} damage!")
+
+    def hide(self):
+        print(f"{self._name} hides in the shadows, increasing evasion chance!")
