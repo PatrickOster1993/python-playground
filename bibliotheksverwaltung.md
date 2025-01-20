@@ -30,7 +30,7 @@ Erstelle zwei Unterklassen `Sachbuch` und `Roman`, die von der Klasse `Buch` erb
 
 Erstelle eine abstrakte Methode in der Klasse `Buch`, die in den Unterklassen implementiert werden muss. Die Methode `lesen()` soll in jeder Unterklasse unterschiedlich implementiert werden:
 - **Sachbuch**: Gibt "Ich lese, um zu lernen!" aus.
-- **Roman**: Gibt "Ich lese, um in eine fesse." aus.
+- **Roman**: Gibt "Ich lese, um in eine fesselnde Welt einzutauchen." aus.
 
 #### **4. Kapselung:**
 
