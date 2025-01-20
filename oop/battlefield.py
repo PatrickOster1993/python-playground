@@ -1,4 +1,4 @@
-from klasse import Krieger, Heiler, Magier, Paladin
+from klasse import Krieger, Heiler, Magier, Schurke, Paladin, Waffe, Gilde, kampf_szenario
 import os
 import sys
 import keyboard
@@ -15,20 +15,30 @@ def wait_for_input():
     clear_screen()
     time.sleep(0.1)  # Kurze Verzögerung um versehentliches Überspringen zu verhindern
 
+# Waffen erstellen
+schwert = Waffe("Eisenschwert", schaden=10, haltbarkeit=5)
+dolch = Waffe("Vergifteter Dolch", schaden=8, haltbarkeit=3)
+zauberstab = Waffe("Kristallstab", schaden=12, haltbarkeit=4)
+streitkolben = Waffe("Heiliger Streitkolben", schaden=15, haltbarkeit=6)
+
 # Charaktere erstellen
 heroes = [
     Krieger(name="Herbert", lebenspunkte=100, angriffskraft=20, ruestung=10),
     Krieger(name="Maximilian", lebenspunkte=80, angriffskraft=25, ruestung=15),
     Heiler("Merlin", 100, 20, 10, 30),
-    Magier("Gandalf", 80, 15, 5, 25),
-    Paladin("Arthur", 120, 30, 20, 15, 10)
+    Magier("Gandalf", 80, 15, 5, 100),
+    Schurke("Aragorn", 90, 22, 8, 30),
+    Paladin("Arthur", 120, 30, 20, 50, 10)
 ]
+
+# Gilde erstellen
+gilde = Gilde("Die Beschützer des Lichts")
 
 # Storyline
 clear_screen()
 print("""
 ==========================================
-          Die Schlacht der Helden
+           Die Schlacht der Helden
 ==========================================
 
 In einer fernen Welt bereiten sich die Helden
@@ -36,66 +46,45 @@ auf eine epische Schlacht vor...
 """)
 wait_for_input()
 
-print("""
-Unsere Helden:
-
-1. Herbert - Der tapfere Krieger
-2. Maximilian - Der starke Krieger  
-3. Merlin - Der weise Heiler
-4. Gandalf - Der mächtige Magier
-5. Arthur - Der edle Paladin
-""")
+print("Die Helden rüsten sich mit Waffen aus...")
+heroes[0].waffe_ausruesten(schwert)  # Herbert bekommt das Schwert
+heroes[4].waffe_ausruesten(dolch)    # Aragorn bekommt den Dolch
+heroes[3].waffe_ausruesten(zauberstab)  # Gandalf bekommt den Zauberstab
+heroes[5].waffe_ausruesten(streitkolben)  # Arthur bekommt den Streitkolben
 wait_for_input()
 
-print("""
-Die Schlacht beginnt!
-
-Herbert greift Maximilian an!
-""")
+print("Die Helden schließen sich der Gilde an...")
+for hero in heroes:
+    gilde.hinzufuegen(hero)
 wait_for_input()
 
-# Kampfsequenz 1
-heroes[0].angreifen(heroes[1])
+print("Arthur wird zum Anführer der Gilde ernannt...")
+gilde.anfuehrerBestimmen(heroes[5])
 wait_for_input()
 
-print("""
-Maximilian verteidigt sich!
-""")
+print("Die Gildenmitglieder:")
+gilde.anzeigen()
 wait_for_input()
 
-heroes[1].verteidigen()
+print("Demonstration der Waffenkombination:")
+kombinierte_waffe = schwert + dolch
+print(f"Kombination aus {schwert.name} und {dolch.name}:")
+print(f"Name: {kombinierte_waffe.name}")
+print(f"Schaden: {kombinierte_waffe.schaden}")
+print(f"Haltbarkeit: {kombinierte_waffe.haltbarkeit}")
 wait_for_input()
 
-print("""
-Merlin eilt zur Hilfe und heilt Maximilian!
-""")
+print("Ein epischer Kampf beginnt!")
+print("Aragorn gegen Gandalf...")
 wait_for_input()
 
-heroes[2].heilen(heroes[1])
-wait_for_input()
-
-print("""
-Gandalf betritt das Schlachtfeld und wirft
-einen mächtigen Feuerball!
-""")
-wait_for_input()
-
-heroes[3].feuerball(heroes[0])
-wait_for_input()
-
-print("""
-Arthur reitet in die Schlacht und zeigt seine
-Kraft als Paladin!
-""")
-wait_for_input()
-
-heroes[4].reiten()
-heroes[4].feuerball(heroes[1])
+# Kampfdemonstration mit der kampf_szenario Funktion
+kampf_szenario(heroes[4], heroes[3])
 wait_for_input()
 
 print("""
 ==========================================
-          Finaler Status der Helden
+           Finaler Status der Helden
 ==========================================
 """)
 for hero in heroes:

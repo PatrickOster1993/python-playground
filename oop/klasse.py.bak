@@ -1,0 +1,549 @@
+"""
+Rollenspiel-Charaktersystem mit objektorientierten Programmierungsprinzipien.
+Dieses Modul implementiert ein komplexes Charaktersystem für ein Rollenspiel mit
+verschiedenen Klassen, Vererbung, abstrakten Klassen und Polymorphismus.
+
+Klassen:
+    - Waffe: Basisklasse für alle Waffen im Spiel
+    - Gilde: Organisationseinheit für Charaktere
+    - Charakter: Abstrakte Basisklasse für alle Spielercharaktere
+    - Krieger: Nahkampf-Spezialist
+    - Magier: Zauberkundiger mit Mana-System
+    - Schurke: Geschickter Kämpfer mit kritischen Treffern
+    - Heiler: Unterstützende Klasse mit Heilfähigkeiten
+    - Paladin: Hybridklasse aus Magier und Krieger
+"""
+
+from abc import ABC, abstractmethod
+import random
+import time
+
+class Waffe:
+    """
+    Repräsentiert eine Waffe im Spiel mit Namen, Schaden und Haltbarkeit.
+    
+    Attributes:
+        _name (str): Name der Waffe
+        _schaden (int): Grundschaden der Waffe
+        _haltbarkeit (int): Verbleibende Nutzungen der Waffe
+    """
+    def __init__(self, name: str, schaden: int, haltbarkeit: int):
+        """
+        Initialisiert eine neue Waffe.
+        
+        Args:
+            name: Der Name der Waffe
+            schaden: Grundschaden der Waffe
+            haltbarkeit: Anzahl möglicher Verwendungen
+        """
+        self._name = name
+        self._schaden = schaden
+        self._haltbarkeit = haltbarkeit
+
+    @property
+    def name(self) -> str:
+        """Gibt den Namen der Waffe zurück."""
+        return self._name
+
+    @property
+    def schaden(self) -> int:
+        """
+        Berechnet den aktuellen Schaden der Waffe.
+        
+        Returns:
+            int: Schadenswert wenn nutzbar, sonst 0
+        """
+        return self._schaden if self.ist_nutzbar() else 0
+
+    @property
+    def haltbarkeit(self) -> int:
+        """Gibt die aktuelle Haltbarkeit zurück."""
+        return self._haltbarkeit
+
+    def ist_nutzbar(self) -> bool:
+        """
+        Prüft ob die Waffe noch verwendet werden kann.
+        
+        Returns:
+            bool: True wenn Haltbarkeit > 0, sonst False
+        """
+        return self._haltbarkeit > 0
+
+    def nutzen(self) -> bool:
+        """
+        Reduziert die Haltbarkeit der Waffe bei Verwendung.
+        
+        Returns:
+            bool: True wenn die Waffe genutzt werden konnte, False wenn nicht mehr nutzbar
+        """
+        if self.ist_nutzbar():
+            self._haltbarkeit -= 1
+            return True
+        return False
+
+    def __add__(self, other):
+        """
+        Überladung des + Operators zum Kombinieren von Waffen.
+        
+        Args:
+            other: Eine andere Waffe zum Kombinieren
+            
+        Returns:
+            Waffe: Eine neue Waffe mit kombinierten Eigenschaften
+            
+        Raises:
+            TypeError: Wenn other keine Waffe ist
+        """
+        if not isinstance(other, Waffe):
+            raise TypeError("Kann nur Waffen miteinander kombinieren!")
+        
+        neuer_name = f"{self.name} + {other.name}"
+        neuer_schaden = self.schaden + other.schaden
+        neue_haltbarkeit = self.haltbarkeit + other.haltbarkeit
+        
+        return Waffe(neuer_name, neuer_schaden, neue_haltbarkeit)
+
+class Gilde:
+    """
+    Organisationseinheit für Charaktere mit Verwaltung von Mitgliedern und einem Anführer.
+    
+    Attributes:
+        _name (str): Name der Gilde
+        _mitglieder (list): Liste der Gildenmitglieder
+        _anfuehrer (Charakter): Anführer der Gilde
+    """
+    def __init__(self, name: str):
+        """
+        Initialisiert eine neue Gilde.
+        
+        Args:
+            name: Name der Gilde
+        """
+        self._name = name
+        self._mitglieder = []
+        self._anfuehrer = None
+
+    @property
+    def name(self) -> str:
+        """Gibt den Namen der Gilde zurück."""
+        return self._name
+
+    def hinzufuegen(self, charakter):
+        """
+        Fügt einen Charakter zur Gilde hinzu, wenn er noch nicht Mitglied ist.
+        
+        Args:
+            charakter: Der hinzuzufügende Charakter
+        """
+        if charakter not in self._mitglieder:
+            self._mitglieder.append(charakter)
+            print(f"{charakter.name} ist der Gilde '{self.name}' beigetreten!")
+        else:
+            print(f"{charakter.name} ist bereits Mitglied der Gilde!")
+
+    def anzeigen(self):
+        """
+        Zeigt eine formatierte Liste aller Gildenmitglieder an.
+        
+        Gibt zuerst den Anführer aus (falls vorhanden),
+        dann alle weiteren Mitglieder in alphabetischer Reihenfolge.
+        """
+        print(f"\nMitglieder der Gilde '{self.name}':")
+        print("=" * 40)
+        if self._anfuehrer:
+            print(f"Anführer: {self._anfuehrer.name}")
+        print("\nMitglieder:")
+        for charakter in self._mitglieder:
+            if charakter != self._anfuehrer:
+                print(f"- {charakter.name}")
+
+    def anfuehrerBestimmen(self, charakter):
+        """
+        Ernennt einen Charakter zum Anführer der Gilde.
+        
+        Args:
+            charakter: Der zum Anführer zu ernennende Charakter
+            
+        Der Charakter muss bereits Mitglied der Gilde sein,
+        um zum Anführer ernannt werden zu können.
+        """
+        if charakter in self._mitglieder:
+            self._anfuehrer = charakter
+            print(f"{charakter.name} wurde zum Anführer der Gilde '{self.name}' ernannt!")
+        else:
+            print(f"{charakter.name} ist kein Mitglied der Gilde und kann nicht zum Anführer ernannt werden!")
+
+def kampf_szenario(charakter_1, charakter_2):
+    """
+    Simuliert einen Kampf zwischen zwei Charakteren bis zur Entscheidung.
+    
+    Args:
+        charakter_1: Erster kämpfender Charakter
+        charakter_2: Zweiter kämpfender Charakter
+        
+    Der Kampf läuft rundenbasiert ab, wobei beide Charaktere abwechselnd
+    angreifen. Nach jeder Runde wird der Status beider Charaktere angezeigt.
+    Der Kampf endet, wenn mindestens einer der Charaktere keine Lebenspunkte
+    mehr hat.
+    
+    Demonstriert das Polymorphismus-Prinzip durch Verwendung der abstrakten
+    angreifen-Methode mit verschiedenen Charakterklassen.
+    """
+    runde = 1
+    while charakter_1.lebenspunkte > 0 and charakter_2.lebenspunkte > 0:
+        print(f"\nRunde {runde}:")
+        print("=" * 40)
+        
+        # Charakter 1 greift an
+        if charakter_1.lebenspunkte > 0:
+            charakter_1.angreifen(charakter_2)
+            time.sleep(1)  # Kurze Pause für bessere Lesbarkeit
+            
+        # Charakter 2 greift an
+        if charakter_2.lebenspunkte > 0:
+            charakter_2.angreifen(charakter_1)
+            time.sleep(1)
+            
+        # Status anzeigen
+        print("\nStatus nach Runde {runde}:")
+        print("-" * 40)
+        charakter_1.checkStatus()
+        print()
+        charakter_2.checkStatus()
+        
+        runde += 1
+    
+    # Gewinner ermitteln
+    print("\nKampf beendet!")
+    print("=" * 40)
+    if charakter_1.lebenspunkte <= 0 and charakter_2.lebenspunkte <= 0:
+        print("Unentschieden! Beide Charaktere wurden besiegt!")
+    elif charakter_1.lebenspunkte <= 0:
+        print(f"{charakter_2.name} hat gewonnen!")
+    else:
+        print(f"{charakter_1.name} hat gewonnen!")
+
+class Charakter(ABC):
+    """
+    Abstrakte Basisklasse für alle Spielercharaktere.
+    Definiert die grundlegende Struktur und Eigenschaften eines Charakters.
+    
+    Attributes:
+        _name (str): Name des Charakters
+        _lebenspunkte (int): Aktuelle Gesundheit
+        _angriffskraft (int): Basis-Angriffsstärke
+        _ruestung (int): Schadensreduzierung
+        _waffe (Waffe): Optional ausgerüstete Waffe
+    """
+    
+    def __init__(self, name: str, lebenspunkte: int, angriffskraft: int, ruestung: int):
+        """
+        Initialisiert einen neuen Charakter.
+        
+        Args:
+            name: Name des Charakters
+            lebenspunkte: Startmenge an Lebenspunkten
+            angriffskraft: Basis-Angriffsstärke
+            ruestung: Grundwert der Rüstung
+        """
+        self._name = name
+        self._lebenspunkte = lebenspunkte
+        self._angriffskraft = angriffskraft
+        self._ruestung = ruestung
+        self._waffe = None  # Neue Eigenschaft für Waffen
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, text):
+        self._name = text
+
+    @property
+    def lebenspunkte(self):
+        return self._lebenspunkte
+
+    @lebenspunkte.setter
+    def lebenspunkte(self, wert):
+        if wert < 0:
+            print("Lebenspunkte können nicht negativ sein!")
+            print("#######################################")
+            self._lebenspunkte = 0
+        else:
+            self._lebenspunkte = wert
+
+    @property
+    def angriffskraft(self):
+        # Berücksichtigt Waffenschaden, wenn eine Waffe ausgerüstet ist
+        basis_kraft = self._angriffskraft
+        if self._waffe and self._waffe.ist_nutzbar():
+            return basis_kraft + self._waffe.schaden
+        return basis_kraft
+
+    @angriffskraft.setter
+    def angriffskraft(self, wert):
+        if wert < 0:
+            print("Angriffskraft kann nicht negativ sein!")
+            print("######################################")
+        else:
+            self._angriffskraft = wert
+
+    @property
+    def ruestung(self):
+        return self._ruestung
+    
+    @ruestung.setter
+    def ruestung(self, wert):
+        if wert < 0:
+            print("Rüstung kann nicht negativ sein!")
+            print("################################")
+        else:
+            self._ruestung = wert
+
+    def waffe_ausruesten(self, waffe):
+        """
+        Rüstet eine neue Waffe aus und zeigt eine Bestätigungsmeldung.
+        
+        Args:
+            waffe: Die auszurüstende Waffe
+            
+        Eine vorher ausgerüstete Waffe wird dabei überschrieben.
+        """
+        self._waffe = waffe
+        print(f"{self.name} hat {waffe.name} ausgerüstet!")
+
+    @abstractmethod
+    def angreifen(self, gegner):
+        """
+        Abstrakte Methode für den Angriff - muss von abgeleiteten Klassen implementiert werden.
+        
+        Args:
+            gegner: Der anzugreifende Charakter
+            
+        Diese Methode definiert das Interface für Angriffe und muss von jeder
+        Charakterklasse entsprechend ihrer spezifischen Kampfmechanik
+        implementiert werden.
+        """
+        pass
+
+    def checkStatus(self):
+        """
+        Zeigt den aktuellen Status des Charakters in formatierter Form an.
+        
+        Gibt alle relevanten Attribute aus, einschließlich Name, Lebenspunkte,
+        Angriffskraft, Rüstung und ggf. ausgerüstete Waffe. Das Format ist
+        einheitlich für alle Charakterklassen, kann aber von abgeleiteten
+        Klassen um zusätzliche Informationen erweitert werden.
+        """
+        print(f"############## {self.name} ###############")
+        print("Lebenspunkte: ", self.lebenspunkte)
+        print("Angriffskraft: ", self.angriffskraft)
+        print("Rüstung: ", self.ruestung)
+        if self._waffe:
+            print(f"Waffe: {self._waffe.name} (Haltbarkeit: {self._waffe.haltbarkeit})")
+        print(f"##########################################")
+
+    def __eq__(self, other):
+        """
+        Überladung des == Operators zum Vergleich von Charakteren.
+        
+        Args:
+            other: Der zu vergleichende Charakter
+            
+        Returns:
+            bool: True wenn die Charaktere in Name, Angriffskraft und Rüstung übereinstimmen
+            
+        Vergleicht die wesentlichen Attribute zweier Charaktere.
+        Wird hauptsächlich für die Gildenverwaltung verwendet, um
+        Duplikate zu vermeiden.
+        """
+        if not isinstance(other, Charakter):
+            return False
+        return (self.name == other.name and 
+                self.angriffskraft == other.angriffskraft and 
+                self.ruestung == other.ruestung)
+
+class Krieger(Charakter):
+    def angreifen(self, gegner):
+        """Führt einen Angriff auf einen anderen Charakter aus und zieht dessen Lebenspunkte ab."""
+        schaden = self.angriffskraft - gegner.ruestung
+        
+        # Waffe nutzen, wenn vorhanden
+        if self._waffe:
+            self._waffe.nutzen()
+            
+        if schaden > 0:
+            gegner.lebenspunkte -= schaden
+            print(f"{self.name} greift {gegner.name} an und fügt {schaden} Schaden zu!")
+            print("#########################################################")
+        else:
+            print(f"{self.name} greift {gegner.name} an, aber der Angriff hat keinen Schaden verursacht!")
+            print("###########################################################################")
+
+    def verteidigen(self):
+        """Erhöht die Rüstung des Kriegers."""
+        self.ruestung += 5
+        print(f"{self.name} verteidigt sich und erhöht seine Rüstung auf {self.ruestung}.")
+        print("#####################################################################")
+
+class Magier(Charakter):
+    def __init__(self, name, lebenspunkte, angriffskraft, ruestung, mana):
+        """Initialisiert einen Magier mit zusätzlichem Mana."""
+        super().__init__(name, lebenspunkte, angriffskraft, ruestung)
+        self._mana = mana
+
+    @property
+    def mana(self):
+        return self._mana
+
+    @mana.setter
+    def mana(self, wert):
+        if wert < 0:
+            print("Mana kann nicht negativ sein!")
+            print("############################")
+            self._mana = 0
+        else:
+            self._mana = wert
+
+    def angreifen(self, gegner):
+        """Führt einen magischen Angriff aus, der Mana verbraucht."""
+        if self.mana >= 10:
+            schaden = self.angriffskraft + 5 - gegner.ruestung
+            
+            # Waffe nutzen, wenn vorhanden
+            if self._waffe:
+                self._waffe.nutzen()
+                
+            self.mana -= 10
+            if schaden > 0:
+                gegner.lebenspunkte -= schaden
+                print(f"{self.name} führt einen magischen Angriff gegen {gegner.name} aus und verursacht {schaden} Schaden!")
+                print(f"Verbleibendes Mana: {self.mana}")
+                print("#########################################################")
+        else:
+            print(f"{self.name} hat nicht genug Mana für einen Angriff!")
+            print("#########################################################")
+
+    def zaubern(self, gegner):
+        """Führt einen stärkeren Zauberangriff aus, der mehr Mana kostet."""
+        if self.mana >= 20:
+            schaden = (self.angriffskraft + 15) - gegner.ruestung
+            
+            # Waffe nutzen, wenn vorhanden
+            if self._waffe:
+                self._waffe.nutzen()
+                
+            self.mana -= 20
+            if schaden > 0:
+                gegner.lebenspunkte -= schaden
+                print(f"{self.name} wirkt einen mächtigen Zauber gegen {gegner.name} und verursacht {schaden} Schaden!")
+                print(f"Verbleibendes Mana: {self.mana}")
+                print("#########################################################")
+        else:
+            print(f"{self.name} hat nicht genug Mana für einen mächtigen Zauber!")
+            print("#########################################################")
+
+    def checkStatus(self):
+        """Zeigt den Status des Magiers an, inklusive Mana."""
+        super().checkStatus()
+        print("Mana: ", self.mana)
+        print(f"##########################################")
+
+class Schurke(Charakter):
+    def __init__(self, name, lebenspunkte, angriffskraft, ruestung, geschicklichkeit):
+        """Initialisiert einen Schurken mit zusätzlicher Geschicklichkeit."""
+        super().__init__(name, lebenspunkte, angriffskraft, ruestung)
+        self._geschicklichkeit = geschicklichkeit
+        self._versteckt = False
+
+    @property
+    def geschicklichkeit(self):
+        return self._geschicklichkeit
+
+    @geschicklichkeit.setter
+    def geschicklichkeit(self, wert):
+        if wert < 0:
+            print("Geschicklichkeit kann nicht negativ sein!")
+            print("######################################")
+        else:
+            self._geschicklichkeit = wert
+
+    def angreifen(self, gegner):
+        """Führt einen Angriff aus mit Chance auf kritischen Treffer."""
+        kritische_chance = self.geschicklichkeit / 100
+        ist_kritisch = random.random() < kritische_chance
+
+        basis_schaden = self.angriffskraft - gegner.ruestung
+        schaden = basis_schaden * 2 if ist_kritisch else basis_schaden
+        
+        # Waffe nutzen, wenn vorhanden
+        if self._waffe:
+            self._waffe.nutzen()
+
+        if schaden > 0:
+            gegner.lebenspunkte -= schaden
+            if ist_kritisch:
+                print(f"{self.name} landet einen kritischen Treffer gegen {gegner.name} und verursacht {schaden} Schaden!")
+            else:
+                print(f"{self.name} greift {gegner.name} an und verursacht {schaden} Schaden!")
+            print("#########################################################")
+        else:
+            print(f"{self.name}s Angriff wurde von {gegner.name}s Rüstung abgewehrt!")
+            print("#########################################################")
+
+    def verstecken(self):
+        """Erhöht temporär die Chance, Angriffen auszuweichen."""
+        self._versteckt = True
+        self.ruestung += self.geschicklichkeit // 2
+        print(f"{self.name} versteckt sich und erhöht seine Verteidigung!")
+        print("#########################################################")
+
+    def checkStatus(self):
+        """Zeigt den Status des Schurken an, inklusive Geschicklichkeit."""
+        super().checkStatus()
+        print("Geschicklichkeit: ", self.geschicklichkeit)
+        print("Versteckt: ", "Ja" if self._versteckt else "Nein")
+        print(f"##########################################")
+
+class Heiler(Krieger):
+    def __init__(self, name, lebenspunkte, angriffskraft, ruestung, heilkraft):
+        """Initialisiert einen Heiler mit zusätzlicher Heilkraft."""
+        super().__init__(name, lebenspunkte, angriffskraft, ruestung)
+        self.heilkraft = heilkraft
+
+    def heilen(self, ziel):
+        """Heilt einen anderen Krieger oder sich selbst."""
+        if ziel.lebenspunkte <= 0:
+            print(f"{ziel.name} ist bereits besiegt und kann nicht geheilt werden!")
+            return
+
+        heilung = self.heilkraft
+        ziel.lebenspunkte += heilung
+        print(f"{self.name} heilt {ziel.name} um {heilung} Lebenspunkte!")
+        print("#########################################################")
+
+    def checkStatus(self):
+        """Zeigt den Status des Heilers an, inklusive Heilkraft."""
+        super().checkStatus()
+        print("Heilkraft: ", self.heilkraft)
+        print(f"##########################################")
+
+class Paladin(Magier):
+    def __init__(self, name, lebenspunkte, angriffskraft, ruestung, magie_kraft, reiter_kraft):
+        """Initialisiert einen Paladin mit zusätzlicher Reiterkraft."""
+        super().__init__(name, lebenspunkte, angriffskraft, ruestung, magie_kraft)
+        self.reiter_kraft = reiter_kraft
+
+    def reiten(self):
+        """Der Paladin reitet und erhöht seine Angriffskraft und Rüstung."""
+        self.angriffskraft += self.reiter_kraft
+        self.ruestung += self.reiter_kraft
+        print(f"{self.name} reitet und erhöht Angriffskraft und Rüstung um {self.reiter_kraft}!")
+        print("#########################################################")
+
+    def checkStatus(self):
+        """Zeigt den Status des Paladins an, inklusive Reiterkraft."""
+        super().checkStatus()
+        print("Reiterkraft: ", self.reiter_kraft)
+        print(f"##########################################")

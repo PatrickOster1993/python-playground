@@ -1,0 +1,34 @@
+class Smartphone:
+    @property
+    def number(self):
+        self.counter += 1
+        return self._number
+
+    @number.setter
+    def number(self, text):
+        self.counter += 1
+        self._number = text
+
+    def __init__(self, name, nummer):
+        self.counter = 0
+        self._number = nummer
+        if self.isIphone(name):
+            self.counter += 1
+
+    def isIphone(self, name):
+        self.counter += 1
+        return "iphone" in name.lower()
+
+mein_smartphone = Smartphone("iPhone", "0123456789")
+
+try:
+    neue_number = "987654321"
+    alte_number = mein_smartphone.number
+    if neue_number != alte_number:
+        mein_smartphone.number = neue_number
+except:
+    mein_smartphone.counter += 1
+else:
+    mein_smartphone.counter += 1
+finally:
+    print(mein_smartphone.counter)  # Einfaches print() funktioniert nun
