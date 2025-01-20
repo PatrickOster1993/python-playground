@@ -3,3 +3,5 @@
 .cache.sqlite
 example.txt
 snake.txt
+.windsurfrules
+.gitignore
