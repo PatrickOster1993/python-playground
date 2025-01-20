@@ -17,7 +17,7 @@ class Schurke(Charakter):
         if kritischer_treffer:
             print("Kritischer Treffer!")
 
-    # zusätzliches Verhalten der Klasse Magier!
+    # zusätzliches Verhalten der Klasse Schurke!
     def verstecken(self):
         self._geschicklichkeit += 1
         print(f"{self.name} versteckt sich und erhöht seine Geschicklichkeit.")
