@@ -25,6 +25,8 @@ class Roman(Buch):
         }
         return FSK_MAPPING[self.genre.lower()]
     
+    def lesen(self):
+        print("Ich lese um lesenswillen")
 
 #mein_roman = Roman(titel_ein="Bibel",autor_ein= "Gott",isbn_mein= "1",genre_mein="Fantasy")
     

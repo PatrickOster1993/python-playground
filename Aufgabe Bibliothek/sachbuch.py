@@ -18,10 +18,10 @@ class Sachbuch(Buch):
        #super().__init__(...) = ruft Konstruktor der Elternklasse auf (= Zuweisung gemeinsamer Attribute)
        super().__init__(titel_ein, autor_ein, isbn_ein)
        #Zuweisung der spezifischen Attribute
-       self.thema = thema_ein
+       self.__thema = thema_ein
 
     def wissenVermitteln(self):
-        print(f"das Buch {self.titel} vermittelt Wissen zum thema {self.thema}.")
+        print(f"das Buch {self.titel} vermittelt Wissen zum thema {self.__thema}.")
 
     def lesen(self):
         print("Ich lese also bin ich")
