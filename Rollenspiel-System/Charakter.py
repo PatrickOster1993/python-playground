@@ -4,8 +4,9 @@ class Person:
         self.hp = hp
         self.ang = ang
         
-    def angriff(self,gegner):
-        gegner.hp = gegner.hp - self.ang
+    def angriff(self,p):
+        p.hp = (p.hp - self.ang)
+        
         
 
 
