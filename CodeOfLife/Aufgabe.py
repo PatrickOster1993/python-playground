@@ -1,49 +1,43 @@
 import time
 import random
-import os
+import os 
 
 
-zeilen = 10
+zeilen  = 10
 spalten = 50
 
-mein_array =  []
+mein_array = []
+
 
 # für alle Buchstaben in zeilen und spalten - platz im 2Dim array machen
-for z in range( zeilen ):  
-    mein_array.append( [ ] )
+for z in range( zeilen ):   
+    mein_array.append( [ ] ) 
     for s in range( spalten ):
         mein_array[z].append( "x" )
+    
+
+
+def zeicheArray():
+     for zeilen_nr in range (zeilen):
+         for spalten_nr in range (spalten):
+             print( mein_array[zeilen_nr][spalten_nr] , end=" " )
+         print( ) # < in nächste Zeile gehen
 
 
 
-
-
-def zeichneArray(): # in eine methode gepackt
-    for zeile_nr in range (zeilen):
-     for spalten_nr in range (spalten):
-         print(mein_array[zeile_nr][spalten_nr], end=" ") 
-          #hier ist eine zeile fertig
-     print() # < in nächste zeile gehen
-
-
-
-
-def zuffy_array_werte():   #A10 lagere den code in eine fkt aus
+def zuffy_array_werte():
     for x in range (zeilen):
         for y in range (spalten):
-            randy = random.randrange(1, 3)
+            randy = random.randrange( 1 , 3)
             if randy == 1:
-                    mein_array[x][y] = "O"
-            else:
-                    mein_array[x][y] = " "
+                mein_array[x][y] = "0"
+            else: 
+                mein_array[x][y] = " "
 
-while True: #Endlosschleife (Gameloop)
+
+
+while True:  # Endlosschleife (Gameloop)
    zuffy_array_werte()
-   zeichneArray()
-   time.sleep( 0.2 )   #30 FPS ??? in Millisek >> 1000 ms /30
-   os.system("cls")
-   
-
-
-
-
+   zeicheArray() 
+   time.sleep( 0.2 ) 
+   os.system( "cls" )
