@@ -62,21 +62,20 @@ Das **`response`-Objekt** enthält alle Informationen über die API-Antwort. Neb
 
 #### Erklärung der verschiedenen Antwortmethoden:
 
-- **`json()`**: Diese Methode wird verwendet, um die Antwort in ein Python-Objekt zu konvertieren, wenn die API-Antwort im JSON-Format vorliegt. JSON (JavaScript Object Notation) ist ein weit verbreitetes Datenformat, das von vielen APIs verwendet wird. Diese Methode gibt in der Regel ein Dictionary zurück.
+- **`json()`**: Diese Methode wird verwendet, um die Antwort in ein Python-Objekt zu konvertieren, wenn die API-Antwort im JSON-Format vorliegt. JSON (JavaScript Object Notation) ist ein weit verbreitetes Datenformat, das von vielen APIs verwendet wird. Diese Methode gibt in der Regel ein Dictionary zurück (= gut zuer Weiterverarbeitung der Daten).
 ```python
 import requests
 
 # Senden einer GET-Anfrage an die API
-response = requests.get('https://api.example.com/data')
+response = requests.get('https://jsonplaceholder.typicode.com/users')
 
 # Überprüfen des Statuscodes der Antwort
 if response.status_code == 200:
     # Verarbeiten der Antwort, falls erfolgreich
+    print("Die Anfrage war erfolgreich!")
     print(response.json())
-else:
-    print(f"Fehler {response.status_code}: Die Anfrage war nicht erfolgreich.")
 ```
-- **`text`**: Gibt den Antwortinhalt als Zeichenkette zurück. Dies ist nützlich, wenn die Antwort im Textformat vorliegt, beispielsweise HTML oder einfacher Text.
+- **`text`**: Gibt den Antwortinhalt als Zeichenkette zurück. Dies ist nützlich, wenn die Antwort im Textformat vorliegt, beispielsweise HTML oder einfacher Text (aber auch gut für Debugging, da Struktur innerhalb der Console ersichtlich).
 ```python
 text_data = response.text
 print(text_data)
