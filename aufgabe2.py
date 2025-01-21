@@ -1,4 +1,15 @@
-temp_c = input("Bitte geben Sie die Temperatur in Celsius ein: ")
-temp_f = 1.8 * float(temp_c) + 32
 
-print(f"Die Temperatur {temp_c} Grad Celsius entspricht {temp_f} Grad Fahrenheit.")
+#Aufgabe 2
+##Schreiben Sie ein Programm, das eine Temperatur in Celsius in Fahrenheit umrechnet und dann anschließend das Ergebnis in der Konsole ausgibt.
+##Die Umrechnungsformel lautet wie folgt: F = 1.8 * C + 32
+##mit F: Temperatur in Fahrenheit; sowie C: Temperatur in Celsius
+##Anmerkung: Geben Sie das Ergebnis bitte als Antwortsatz aus!
+
+# Eingabe vom Nutzer
+eingabe_celsiusinFahrenheit = float(input("Gebe bitte deine Celsius Zahl ein: "))
+
+
+berechnung  = 1.8 * eingabe_celsiusinFahrenheit + 32
+
+print("Celsius ergibt in Fahrenheit " + str(berechnung) )
+
