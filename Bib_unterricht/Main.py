@@ -1,24 +1,32 @@
+from Bibliothek import Bibliothek
 from Roman import Roman
 from Sachbuch import Sachbuch
 
-# Instanziierung eines Sachbuch-Objekts
-mein_sachbuch = Sachbuch(
-    titel_ein="Physik ist toll",
-    autor_ein="Albert Zweistein",
-    isbn_ein="123456789",
-    thema_ein="Physik"
+# Erstelle eine Bibliothek
+meine_bibliothek = Bibliothek()
+
+# Füge ein Sachbuch hinzu
+meine_bibliothek.buch_hinzufuegen(
+    Sachbuch,
+    "Physik ist toll",
+    "Albert Zweistein",
+    "123456789",
+    "Physik"
 )
 
-# Aufruf der Methode wissenVermitteln
-mein_sachbuch.wissenVermitteln()
-
-# Instanziierung eines Roman-Objekts
-mein_roman = Roman(
-    titel_ein="Drachen Chroniken",
-    autor_ein="Peter Brand",
-    isbn_ein="123456789",
-    genre_ein="Fantasy"
+# Füge einen Roman hinzu
+meine_bibliothek.buch_hinzufuegen(
+    Roman,
+    "Drachen Chroniken",
+    "Peter Brand",
+    "123456789",
+    "Fantasy"
 )
 
-# Aufruf der Methode details
-print(mein_roman.details())
+# Zeige alle Bücher in der Bibliothek an
+meine_bibliothek.alle_buecher()
+
+# Suche nach einem Buch und lese es
+buch = meine_bibliothek.buch_suchen("Drachen Chroniken")
+if buch:
+    meine_bibliothek.buch_lesen(buch)
