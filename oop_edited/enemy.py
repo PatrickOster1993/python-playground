@@ -1,8 +1,8 @@
 from player import Character
 
 class GoblinMagier(Character):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, name, hp, mp, atk, defense, magicattack, magicdefense):
+        super().__init__(name, hp, mp, atk, defense, magicattack, magicdefense)
 
     
 class Zombie(Character):
