@@ -14,13 +14,18 @@ class Roman(Buch):
        #Zuweisung der spezifischen Attribute
        self.genre = genre_ein
 
-    @property
+    @property #eine Property ist ein "intelligentes Attribut" welches noch eine funktion hat /getter
     def fsk(self):
-        genre_fsk_mapping = {
-            "Thriller": 18,
-            "Horror": 18,
-            "Drama": 12
+        FSK_MAPPING = {
+            "kinderbuch": 0,
+            "comedy": 6,
+            "fantasy": 12,
+            "thriller": 16,
+            "erotik": 18
         }
+        return FSK_MAPPING[self.genre.lower()]
+    
 
+#mein_roman = Roman(titel_ein="Bibel",autor_ein= "Gott",isbn_mein= "1",genre_mein="Fantasy")
     
 

@@ -23,6 +23,9 @@ class Sachbuch(Buch):
     def wissenVermitteln(self):
         print(f"das Buch {self.titel} vermittelt Wissen zum thema {self.thema}.")
 
+    def lesen(self):
+        print("Ich lese also bin ich")
+
 mein_sachbuch = Sachbuch(
     titel_ein="physik ist toll",
     autor_ein="Albert ZweiKohle",
