@@ -4,10 +4,10 @@
                    +----------------------+
                    | + titel: str         |
                    | + autor: str         |
-                   | # isbn: str          |
+                   | + isbn: str          |
                    +----------------------+
                    | + lesen() <abstract> |
-                   | + details(): str     |
+                   | + details()          |
                    +----------------------+
                              ^  implements "lesen()"
          +-------------------+-----------------+
@@ -17,7 +17,7 @@
 +------------------+              +----------------------------+
 | + genre: str     |              | - thema: str               |
 | + fsk: int       |              +----------------------------+
-+------------------+              | + wissen_vermitteln(): str |
++------------------+              | + wissenVermitteln(): str  |
                                   +----------------------------+
 
                    +--------------------------------+
@@ -25,9 +25,8 @@
                    +--------------------------------+
                    | - buecher: List[Buch]          |
                    +--------------------------------+
-                   | + buch_hinzufuegen(buch: Buch) |
-                   | + buch_entfernen(buch: Buch)   |
-                   | + buecher_anzeigen()           |
+                   | + buchHinzufuegen(buch: Buch)  |
+                   | + buchEntfernen(buch: Buch)    |
                    +--------------------------------+
                                     |
                                     | (m:n)
