@@ -96,3 +96,15 @@ except requests.exceptions.HTTPError as err:
 ### Fazit
 
 APIs sind eine grundlegende Technologie, um mit externen Datenquellen oder Diensten zu interagieren. Sie bieten eine standardisierte Möglichkeit, auf Daten zuzugreifen und diese zu verarbeiten. In Python wird die Arbeit mit APIs durch die `requests`-Bibliothek vereinfacht, die es ermöglicht, HTTP-Anfragen zu senden und Antworten in verschiedenen Formaten zu verarbeiten. Das `response`-Objekt liefert alle wichtigen Informationen über die Antwort und bietet Methoden zur Verarbeitung der Daten, die von der API zurückgegeben werden.
+
+> Tipp: Mittels dem header-Argument können Sie erweiterte Einstellungen vornehmen, wie etwas das Setzen eines **user-agent** oder die für eine **Authentifizierung** erforderlichen Daten (z. B. API-KEY).
+
+```python
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'User-Agent': 'YourApp/1.0'
+}
+url = 'https://api.example.com/data'
+
+response = requests.get(url, headers=headers)
+```
