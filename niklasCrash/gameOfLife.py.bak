@@ -1,0 +1,11 @@
+# Aufgabe 1
+# Erstelle ein 2 dimensionales Array
+# in das Buchstabensymbole eingetragen werden
+
+#mein_array = [[ "A", "Z", "d",][]]
+
+# Aufgabe 2
+# Schleife die 20 Zeichen nacheinander ausgíbt
+
+for x in range (20):
+    print("x")

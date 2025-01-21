@@ -1,0 +1,72 @@
+@startuml Bibliotheksverwaltung
+
+' Abstrakte Basisklasse Buch
+abstract class Buch {
+  - __titel: str
+  - __autor: str
+  - __isbn: str
+  + titel: property
+  + autor: property
+  + isbn: property
+  + details(): str
+  + {abstract} lesen(): str
+}
+
+' Sachbuch erbt von Buch
+class Sachbuch {
+  - __thema: str
+  + thema: property
+  + lesen(): str
+  + wissenVermitteln(): str
+}
+
+' Roman erbt von Buch
+class Roman {
+  - __genre: str
+  - __genre_fsk_mapping: dict
+  + genre: property
+  + fsk: property
+  + lesen(): str
+}
+
+' Bibliothek verwaltet Bücher und Kunden
+class Bibliothek {
+  - __buecher: Dict[str, Buch]
+  - __exemplare: Dict[str, int]
+  - __kunden: Dict[str, Kunde]
+  + buch_hinzufuegen(buch: Buch, anzahl: int): None
+  + buch_entfernen(isbn: str): bool
+  + kunde_registrieren(kunde: Kunde): bool
+  + kunde_entfernen(kunden_id: str): bool
+  + buch_ausleihen(kunden_id: str, isbn: str): bool
+  + buch_zurueckgeben(kunden_id: str, isbn: str): bool
+  + zeige_bestand(): None
+  + zeige_kunden(): None
+  + finde_buch(isbn: str): Optional[Buch]
+  + anzahl_buecher: property
+}
+
+' Kundenklasse für die Verwaltung von Bibliothekskunden
+class Kunde {
+  - __name: str
+  - __kunden_id: str
+  - __ausgeliehene_buecher: Set[str]
+  + name: property
+  + kunden_id: property
+  + anzahl_ausgeliehener_buecher: property
+  + buch_ausleihen(buch: Buch): bool
+  + buch_zurueckgeben(buch: Buch): bool
+  + hat_buch_ausgeliehen(isbn: str): bool
+  + zeige_ausgeliehene_buecher(): None
+}
+
+' Vererbungsbeziehungen
+Buch <|-- Sachbuch
+Buch <|-- Roman
+
+' Aggregationsbeziehungen
+Bibliothek o-- "0..*" Buch : verwaltet >
+Bibliothek o-- "0..*" Kunde : verwaltet >
+Kunde o-- "0..*" Buch : leiht aus >
+
+@enduml

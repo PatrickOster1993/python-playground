@@ -354,7 +354,7 @@ class Charakter(ABC):
         Returns:
             int: Anzahl der verbleibenden Lebenspunkte
         """
-        Setzt die Lebenspunkte des Charakters.
+        return self._lebenspunkte
 
         Args:
             wert (int): Neue Anzahl der Lebenspunkte
