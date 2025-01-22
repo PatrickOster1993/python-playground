@@ -12,10 +12,12 @@ if response.status_code == 200:
     print(response.text) # bessere Lesbarkeit (für Konsole)
     # print(response.content) # für Verarbeitung von nicht-textellen Daten / Binärdaten (z. B. Bilder / Audios)
 
-# # Alternatives Abfangen von Fehlern / gescheiterten Anfragen
-# # für mich persönlich präferierte Variante, da über echtes Exception-Handling!
-""" try:
-     response.raise_for_status()
-     print("RAISE_FOR_STATUS: Die Anfrage war erfolgreich!")
-except requests.exceptions.HTTPError as err:
-     print(f"Ein Fehler ist aufgetreten: {err}") """
+# Alternatives Abfangen von Fehlern / gescheiterten Anfragen
+# für mich persönlich präferierte Variante, da über echtes Exception-Handling!
+# try:
+#     response.raise_for_status()
+# except requests.exceptions.HTTPError as err:
+#     print(f"Ein Fehler ist aufgetreten: {err}")
+# else:
+#     print(response.text)
+#     print("RAISE_FOR_STATUS: Die Anfrage war erfolgreich!")
