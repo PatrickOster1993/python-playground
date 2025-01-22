@@ -6,12 +6,13 @@ krieger2 = Krieger(name="Maximilian", lebenspunkte=80, angriffskraft=25, ruestun
 
 # Krieger 1 greift Krieger 2 an
 krieger1.angreifen(gegner=krieger2)
-
+krieger2.angreifen(gegner=krieger1)
 # Krieger 2 verteidigt sich
 krieger2.verteidigen()
 
 # Status von Krieger 2 checken
 krieger2.checkStatus()
+krieger1.checkStatus()
 
 # Beispiel für Setter-Methoden
 krieger2.lebenspunkte = 90  # Lebenspunkte ändern

@@ -12,20 +12,20 @@
 import requests
 import pandas as pd
 
-# Senden einer GET-Anfrage an die API
+
 response = requests.get('https://jsonplaceholder.typicode.com/users')
 
-# Überprüfen des Statuscodes der Antwort
+
 if response.status_code == 200:
     print("STATUS_CODE: Die Anfrage war erfolgreich!")
     
-    # Verarbeiten der Antwortdaten in JSON (Python-Dictionary)
+    
     datein = response.json()
     
-    # Erstellen eines DataFrames mit pandas, nur die gewünschten Spalten
+    
     Ausgabe = pd.DataFrame(datein, columns=['id', 'name', 'username', 'email'])
     
-    # DataFrame anzeigen
+    
     print(Ausgabe)
 else:
     print(f"STATUS_CODE: Anfrage fehlgeschlagen mit Statuscode {response.status_code}")

@@ -20,7 +20,8 @@ if response.status_code == 200:
     #print(response.json()) # bessere Weiterverarbeitung (Python dict)
     print(response.text) # bessere Lesbarkeit (für Konsole)
     # print(response.content) # für Verarbeitung von nicht-textellen Daten / Binärdaten (z. B. Bilder / Audios)
-
+else: 
+    print(f"Derfehlercode lautet : {response.status_code}")
 # # Alternatives Abfangen von Fehlern / gescheiterten Anfragen
 # # für mich persönlich präferierte Variante, da über echtes Exception-Handling!
 # try:
