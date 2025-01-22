@@ -10,7 +10,7 @@
 ## Methode:
 ### Logik für Verleih der Bücher (*) (check)
 
-## Kapselung überlegen!
+## Kapselung überlegen! (check)
 
 # from roman import Roman
 from buch import Buch
