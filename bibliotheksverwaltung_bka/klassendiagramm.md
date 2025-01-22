@@ -16,7 +16,7 @@ class Buch {
     +setAutor(autor: str)
     +setIsbn(isbn: str)
     +details() str
-    +lesen() str
+    +lesen()* str
 }
 
 %% Sachbuch erbt von Buch
