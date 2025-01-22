@@ -15,6 +15,7 @@ class Archer: ## Klasse Variable
     def attack(self,gegner) :
         gegner.hp -= self.angriff
         
+        
         print(f"{self.name} greift mit {self.angriff} schaden  {gegner.name} an")   
     
 archer1 = Archer("mete",100,0,3,50) # instanz
@@ -33,3 +34,4 @@ archer2.attack(archer1)
 
 archer1.status()
 archer2.status()
+##
