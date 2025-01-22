@@ -1,6 +1,7 @@
 from sachbuch import Sachbuch
 from roman import Roman
 from bibliothek import Bibliothek
+from kunde import Kunde
 
 def main():
     # Instanzen erzeugen
@@ -34,7 +35,28 @@ def main():
     meine_bibliothek.buchHinzufuegen(mein_roman)
 
     meine_bibliothek.buchEntfernen(mein_roman)
+    meine_bibliothek.buchHinzufuegen(mein_roman)
     print("######################################################")
+
+    # Kunde und Bibliothek
+    ich = Kunde(
+        name_ein="Patrick", 
+        kundenNr_ein=0
+    )
+
+    meine_bibliothek.kundeHinzufuegen(ich)
+
+    meine_bibliothek.buchHinzufuegen(mein_roman)
+    meine_bibliothek.buchHinzufuegen(mein_roman)
+
+    meine_bibliothek.buchVerleihen(mein_sachbuch, ich)
+    meine_bibliothek.buchVerleihen(mein_roman, ich)
+
+    meine_bibliothek.buchZuruecknehmen(mein_roman, ich)
+
+    meine_bibliothek.buchHinzufuegen(mein_sachbuch)
+
+    meine_bibliothek.zeigeBuchbestand()
 
 if __name__ == "__main__":
     main()
