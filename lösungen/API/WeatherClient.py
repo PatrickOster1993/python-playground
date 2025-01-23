@@ -11,10 +11,10 @@ class WeatherClient:
         self.__forecast = None
 
     def fetchActualData(self):
-        response = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={self.city}&appid={Key.apiKey}=metric')
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={self.city}&appid={Key.apiKey}&units=metric')
         try:
             response.raise_for_status()
-            self.__actual = response
+            self.__actual = response.json()
             print("Anfrage erfolgreich")
         except requests.exceptions.HTTPError as err:
             print(f"Ein Fehler ist aufgetreten: {err}") 
@@ -23,21 +23,31 @@ class WeatherClient:
         response = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?q={self.city}&appid={Key.apiKey}&units=metric')
         try:
             response.raise_for_status()
-            self.__actual = response
+            self.__forecast = response.json()
             print("Anfrage erfolgreich")
         except requests.exceptions.HTTPError as err:
             print(f"Ein Fehler ist aufgetreten: {err}") 
 
     @property
     def dataDict(self):
-        print(self.__response.json())   
+        if self.__actual and self.__forecast:
+            print(self.__actual)
+            print(self.__forecast)
+        else:
+            print("Geen data beschikbaar")
 
     @property
     def status(self):
-        pass
+        if self.__actual and self.__forecast:
+            print(f"Actual data status: {self.__actual.get('cod', 'Onbekend')}")
+            print(f"Forecast data status: {self.__forecast.get('cod', 'Onbekend')}")
+        else:
+            print("Geen status beschikbaar, data is niet opgehaald.")
+            
 
+    @property
     def showWeather(self):
-        pass
+        print(self.__actual.text)
 
     def dataFrame(self):
         pass
@@ -45,8 +55,9 @@ class WeatherClient:
     def plotData(self):
         pass
 
-herford = WeatherClient("Herford")
+herford = WeatherClient("herford")
 
-herford.fetchData()
-herford.dataDict
+herford.fetchForecastData()
+herford.fetchActualData()
+herford.showWeather
 
