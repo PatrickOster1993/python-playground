@@ -19,3 +19,5 @@ if __name__ == "__main__":
     
     # Starte den Kampf zwischen dem Spielercharakter und dem Gegner
     utils.fight(mete, goblinmagier)
+    
+    
