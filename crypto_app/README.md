@@ -10,6 +10,92 @@ Eine Python-basierte Anwendung zur Analyse und Visualisierung von Kryptowährung
 - 💹 Börsenhandelsdaten untersuchen
 - ⚡ Live Bitcoin-Preisdiagramm
 
+## 📊 Klassendiagramm
+
+```mermaid
+classDiagram
+    class CryptoModel {
+        -cg: CoinGeckoAPI
+        +__init__()
+        -_initialize_client()
+        +get_current_prices(coin_ids, currencies)
+        +get_historical_data(coin_id, days)
+        +get_categories_list()
+        +get_coins_in_category(category_id)
+        +get_exchanges_list()
+        +get_exchange_tickers(exchange_id)
+        +get_bitcoin_price()
+    }
+
+    class CryptoView {
+        +show_menu()
+        +get_user_input(prompt)
+        +show_prices(prices)
+        +show_historical_data(data, coin_id, days)
+        +show_categories(categories)
+        +show_category_coins(coins, category_id)
+        +show_exchanges(exchanges)
+        +show_exchange_data(tickers, exchange_id)
+    }
+
+    class ChartView {
+        -timestamps: deque
+        -prices: deque
+        -fig: Figure
+        -ax: Axes
+        -line: Line2D
+        +__init__()
+        +setup_live_chart(historical_data)
+        +update_chart(frame, price)
+    }
+
+    class CryptoController {
+        -model: CryptoModel
+        -view: CryptoView
+        -chart_view: ChartView
+        +__init__(model, view, chart_view)
+        +run()
+        -handle_current_prices()
+        -handle_historical_data()
+        -handle_category_comparison()
+        -handle_exchange_analysis()
+        -handle_live_chart()
+    }
+
+    CryptoController --> CryptoModel : verwendet
+    CryptoController --> CryptoView : verwendet
+    CryptoController --> ChartView : verwendet
+```
+
+## 🔄 Sequenzdiagramm (Live-Chart-Beispiel)
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Controller as CryptoController
+    participant Model as CryptoModel
+    participant ChartView
+    participant API as CoinGecko API
+
+    User->>Controller: Wählt Live-Chart (Option 5)
+    Controller->>Model: get_historical_data('bitcoin', 0.042)
+    Model->>API: API-Anfrage für historische Daten
+    API-->>Model: Historische Daten
+    Model-->>Controller: Historische Daten
+    Controller->>ChartView: setup_live_chart(historical_data)
+    ChartView->>ChartView: Initialisiere Chart
+    
+    loop Alle 15 Sekunden
+        Controller->>Model: get_bitcoin_price()
+        Model->>API: API-Anfrage für aktuellen Preis
+        API-->>Model: Aktueller Preis
+        Model-->>Controller: Aktueller Preis
+        Controller->>ChartView: update_chart(price)
+        ChartView->>ChartView: Aktualisiere Visualisierung
+        ChartView-->>User: Zeige aktualisiertes Chart
+    end
+```
+
 ## 🏗️ Projektstruktur
 
 ```
