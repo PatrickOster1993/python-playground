@@ -1,3 +1,9 @@
+"""
+Ein interaktives Menüprogramm zur Abfrage und Visualisierung von Kryptowährungsdaten über die CoinGecko API.
+Das Programm bietet verschiedene Funktionen wie Preisabfragen, historische Daten, Kategorienvergleiche und Live-Charts.
+"""
+
+# Notwendige Bibliotheken importieren
 import os
 import datetime
 from pycoingecko import CoinGeckoAPI
@@ -7,12 +13,32 @@ from collections import deque
 import time
 
 def initialize_coingecko_client():
+    """
+    Initialisiert und konfiguriert den CoinGecko API Client.
+    
+    Returns:
+        CoinGeckoAPI: Konfigurierter API Client für CoinGecko
+    
+    Raises:
+        ValueError: Wenn kein API-Schlüssel in den Umgebungsvariablen gefunden wird
+    """
     api_key = os.getenv('COINGECKO_API_KEY')
     if api_key is None:
         raise ValueError("API-Schlüssel nicht gefunden. Bitte stellen Sie sicher, dass die Umgebungsvariable 'COINGECKO_API_KEY' gesetzt ist.")
     return CoinGeckoAPI()
 
 def get_current_prices(cg):
+    """
+    Ermöglicht Echtzeitpreisabfragen für beliebige Kryptowährungen.
+    
+    Parameters:
+        cg (CoinGeckoAPI): Der initialisierte CoinGecko Client
+    
+    Funktionsweise:
+        1. Benutzer gibt Kryptowährungs-IDs ein (z.B. bitcoin,ethereum)
+        2. Benutzer wählt Vergleichswährungen (z.B. usd,eur)
+        3. Zeigt aktuelle Preise für alle Kombinationen an
+    """
     coins = input("Geben Sie die IDs der Kryptowährungen ein (durch Kommas getrennt, z.B. bitcoin,ethereum): ")
     vs_currencies = input("Geben Sie die Vergleichswährungen ein (durch Kommas getrennt, z.B. usd,eur): ")
     prices = cg.get_price(ids=coins.split(','), vs_currencies=vs_currencies.split(','))
@@ -22,6 +48,17 @@ def get_current_prices(cg):
             print(f"{coin} in {currency}: {price}")
 
 def get_historical_data(cg):
+    """
+    Ruft und visualisiert historische Preisdaten einer Kryptowährung ab.
+    
+    Parameters:
+        cg (CoinGeckoAPI): Der initialisierte CoinGecko Client
+    
+    Funktionsweise:
+        1. Fragt Benutzer nach Kryptowährungs-ID
+        2. Fragt Zeitraum in Tagen ab
+        3. Zeigt chronologische Preisdaten mit Zeitstempeln
+    """
     coin_id = input("Geben Sie die ID der Kryptowährung ein (z.B. bitcoin): ")
     days = input("Geben Sie die Anzahl der Tage für die historischen Daten ein (z.B. 30): ")
     data = cg.get_coin_market_chart_by_id(id=coin_id, vs_currency='usd', days=days)
@@ -32,52 +69,110 @@ def get_historical_data(cg):
         print(f"Datum: {timestamp}, Preis: {price} USD")
 
 def compare_coins_in_category(cg):
-    categories = cg.get_coins_categories_list()
-    print("Verfügbare Kategorien:")
-    for category in categories:
-        print(f"- {category['name']} (ID: {category['id']})")
+    """
+    Vergleicht Kryptowährungen innerhalb einer bestimmten Kategorie.
+    
+    Parameters:
+        cg (CoinGeckoAPI): Der initialisierte CoinGecko Client
+    
+    Funktionsweise:
+        1. Lädt und zeigt verfügbare Kategorien
+        2. Benutzer wählt Kategorie
+        3. Zeigt detaillierte Vergleichsdaten aller Coins in dieser Kategorie
+    
+    Fehlerbehandlung:
+        - Prüft auf gültige API-Antworten
+        - Fängt und meldet Netzwerk- oder API-Fehler
+    """
+    try:
+        # Abrufen der verfügbaren Kategorien
+        categories = cg.get_coins_categories_list()
+        if not isinstance(categories, list):
+            print("Fehler: Ungültige Kategorie-Liste erhalten")
+            return
+            
+        # Ausgabe der verfügbaren Kategorien
+        print("Verfügbare Kategorien:")
+        for category in categories:
+            print(f"- {category.get('name', 'Unbekannte Kategorie')} (ID: {category.get('category_id', 'n/a')})")
+            
+    except Exception as e:
+        print(f"Fehler beim Abrufen der Kategorien: {str(e)}")
+    
+    # Benutzer zur Eingabe der Kategorie-ID auffordern
     category_id = input("Geben Sie die ID der gewünschten Kategorie ein: ")
+    
+    # Abrufen der Coins in der angegebenen Kategorie
     coins = cg.get_coins_markets(vs_currency='usd', category=category_id)
+    
+    # Ausgabe der Coins in der Kategorie
     print(f"Coins in der Kategorie '{category_id}':")
     for coin in coins:
         print(f"Name: {coin['name']}, Symbol: {coin['symbol']}, Preis: {coin['current_price']} USD, Marktkapitalisierung: {coin['market_cap']} USD")
 
 def analyze_exchange_data(cg):
+    """
+    Analysiert und präsentiert Handelsdaten verschiedener Kryptobörsen.
+    
+    Parameters:
+        cg (CoinGeckoAPI): Der initialisierte CoinGecko Client
+    
+    Funktionsweise:
+        1. Zeigt Liste verfügbarer Börsen
+        2. Benutzer wählt eine Börse
+        3. Präsentiert aktive Handelspaare und Volumina
+    """
+    # Abrufen der Liste der verfügbaren Börsen
     exchanges = cg.get_exchanges_list()
     print("Verfügbare Börsen:")
     for exchange in exchanges:
         print(f"- {exchange['name']} (ID: {exchange['id']})")
+    
+    # Benutzer zur Eingabe der Börsen-ID auffordern
     exchange_id = input("Geben Sie die ID der gewünschten Börse ein: ")
+    
+    # Abrufen der Handelspaare für die angegebene Börse
     tickers = cg.get_exchanges_tickers_by_id(id=exchange_id)
     print(f"Handelspaare an der Börse '{exchange_id}':")
     for ticker in tickers['tickers']:
         print(f"Handelspaar: {ticker['base']}/{ticker['target']}, Volumen: {ticker['volume']}")
 
-def monitor_derivatives(cg):
-    derivatives_exchanges = cg.get_derivatives_exchanges()
-    print("Verfügbare Derivate-Börsen:")
-    for exchange in derivatives_exchanges:
-        print(f"- {exchange['name']} (ID: {exchange['id']})")
-    exchange_id = input("Geben Sie die ID der gewünschten Derivate-Börse ein: ")
-    derivatives = cg.get_derivatives_exchanges_by_id(id=exchange_id)
-    print(f"Derivate an der Börse '{exchange_id}':")
-    for derivative in derivatives['tickers']:
-        print(f"Symbol: {derivative['symbol']}, Basiswert: {derivative['base']}, Zielwert: {derivative['target']}, Open Interest: {derivative['open_interest_usd']} USD")
-
 def show_live_price_chart(cg):
-    # Daten initialisieren
+    """
+    Erstellt und aktualisiert ein Echtzeit-Preisdiagramm für Bitcoin.
+    
+    Parameters:
+        cg (CoinGeckoAPI): Der initialisierte CoinGecko Client
+    
+    Technische Details:
+        - Verwendet matplotlib für die Visualisierung
+        - Aktualisiert alle 15 Sekunden
+        - Zeigt die letzten 100 Datenpunkte
+        - Startet mit historischen Daten der letzten Stunde
+    """
+    # Initialisiere Datenstrukturen für die Chartdarstellung
+    historical_data = cg.get_coin_market_chart_by_id(id='bitcoin', vs_currency='usd', days=0.042)
+    
+    # Erstelle zirkuläre Puffer für die letzten 100 Datenpunkte
     timestamps = deque(maxlen=100)
     prices = deque(maxlen=100)
     
-    # Diagramm initialisieren
+    # Fülle initiale historische Daten ein
+    for price_point in historical_data['prices']:
+        timestamp = datetime.datetime.fromtimestamp(price_point[0] / 1000).strftime("%H:%M:%S")
+        timestamps.append(timestamp)
+        prices.append(price_point[1])
+    
+    # Chart-Konfiguration
     fig, ax = plt.subplots()
-    line, = ax.plot([], [], label="Bitcoin Preis (USD)")
-    plt.title("Echtzeit Bitcoin Preis (USD)")
+    line, = ax.plot(range(len(prices)), prices, label="Bitcoin Preis (USD)")
+    plt.title("Bitcoin Preis der letzten Stunde (USD)")
     plt.xlabel("Zeit")
     plt.ylabel("Preis (USD)")
     plt.legend()
     
     def fetch_bitcoin_price():
+        """Hilfsfunktion zum Abrufen des aktuellen Bitcoin-Preises"""
         try:
             data = cg.get_price(ids='bitcoin', vs_currencies='usd')
             return data['bitcoin']['usd']
@@ -86,27 +181,42 @@ def show_live_price_chart(cg):
             return None
     
     def update(frame):
+        """Animation-Update-Funktion für das Live-Chart"""
         price = fetch_bitcoin_price()
         if price is not None:
+            # Aktualisiere Datenpunkte
             timestamp = time.strftime("%H:%M:%S")
             timestamps.append(timestamp)
             prices.append(price)
             
+            # Aktualisiere Chart-Daten
             line.set_xdata(range(len(prices)))
             line.set_ydata(prices)
             
+            # Aktualisiere X-Achsen-Labels
             ax.set_xticks(range(len(timestamps)))
             ax.set_xticklabels(timestamps, rotation=45, ha="right")
             
+            # Passe Achsenskalierung an
             ax.relim()
             ax.autoscale_view()
             plt.pause(0.1)
     
     print("Live Bitcoin-Preisdiagramm wird gestartet...")
+    # Starte Animation mit 15-Sekunden-Intervall
     ani = FuncAnimation(fig, update, interval=15000)
     plt.show()
 
 def main_menu():
+    """
+    Hauptmenüfunktion, die das interaktive Benutzermenü bereitstellt.
+    
+    Funktionsweise:
+        1. Initialisiert CoinGecko Client
+        2. Zeigt Hauptmenü mit Optionen
+        3. Verarbeitet Benutzereingaben in einer Schleife
+        4. Ruft entsprechende Funktionen basierend auf der Auswahl auf
+    """
     cg = initialize_coingecko_client()
     while True:
         print("\n--- CoinGecko Menü ---")
@@ -114,10 +224,9 @@ def main_menu():
         print("2. Historische Preisentwicklungen untersuchen")
         print("3. Vergleich von Coins innerhalb einer Kategorie")
         print("4. Analyse von Börsenhandelsdaten")
-        print("5. Überwachung von Derivatemärkten")
-        print("6. Live Bitcoin-Preisdiagramm")
-        print("7. Beenden")
-        choice = input("Bitte wählen Sie eine Option (1-7): ")
+        print("5. Live Bitcoin-Preisdiagramm")
+        print("6. Beenden")
+        choice = input("Bitte wählen Sie eine Option (1-6): ")
 
         if choice == '1':
             get_current_prices(cg)
@@ -128,10 +237,8 @@ def main_menu():
         elif choice == '4':
             analyze_exchange_data(cg)
         elif choice == '5':
-            monitor_derivatives(cg)
-        elif choice == '6':
             show_live_price_chart(cg)
-        elif choice == '7':
+        elif choice == '6':
             print("Programm wird beendet.")
             break
         else:

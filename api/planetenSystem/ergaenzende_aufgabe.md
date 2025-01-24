@@ -8,6 +8,9 @@ Erstelle eine Klasse, die Planeteninformationen von einer API abruft und die Dat
 Nutze die Planeten-API:  
 [https://api.le-systeme-solaire.net/rest/bodies/](https://api.le-systeme-solaire.net/rest/bodies/)
 
+
+
+
 ---
 
 ## **Klasse: `PlanetClient`**

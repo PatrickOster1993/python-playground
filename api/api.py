@@ -8,11 +8,7 @@ response = requests.get('https://jsonplaceholder.typicode.com/users')
 if response.status_code == 200:
     # Verarbeiten der Antwort, falls erfolgreich
     print("STATUS_CODE: Die Anfrage war erfolgreich!")
-<<<<<<< HEAD
     print(response.json()) # bessere Weiterverarbeitung (Python dict)
-=======
-    # print(response.json()) # bessere Weiterverarbeitung (Python dict)
->>>>>>> 63b759692bea897459a8f4b79cd799eb588b8297
     print(response.text) # bessere Lesbarkeit (für Konsole)
     # print(response.content) # für Verarbeitung von nicht-textellen Daten / Binärdaten (z. B. Bilder / Audios)
 
