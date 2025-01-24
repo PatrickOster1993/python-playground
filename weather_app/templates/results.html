@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ergebnisse für {{ city }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wetterdaten für {{ city }}</h1>
+        
+        <div class="weather-card">
+            <h2>7-Tage-Vorhersage</h2>
+            <div class="chart">
+                <img src="data:image/png;base64,{{ plot }}" alt="Temperaturdiagramm">
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Datum</th>
+                    <th>Max. Temperatur</th>
+                </tr>
+                {% for date, temp in zip(data.daily.time, data.daily.temperature_2m_max) %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ "%.1f °C"|format(temp) }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+        <a href="/" class="back-link">Neue Suche</a>
+    </div>
+</body>
+</html>

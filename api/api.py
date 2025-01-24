@@ -9,7 +9,7 @@ if response.status_code == 200:
     # Verarbeiten der Antwort, falls erfolgreich
     print("STATUS_CODE: Die Anfrage war erfolgreich!")
     print(response.json()) # bessere Weiterverarbeitung (Python dict)
-    # print(response.text) # bessere Lesbarkeit (für Konsole)
+    print(response.text) # bessere Lesbarkeit (für Konsole)
     # print(response.content) # für Verarbeitung von nicht-textellen Daten / Binärdaten (z. B. Bilder / Audios)
 
 # # Alternatives Abfangen von Fehlern / gescheiterten Anfragen
