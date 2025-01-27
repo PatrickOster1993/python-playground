@@ -1,0 +1,70 @@
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+
+class PlanetClient:
+    def __init__(self):
+        self._data = None  # Hier speichern wir die abgerufenen Daten
+
+    def fetchData(self):
+        """Lädt die Planeteninformationen von der API."""
+        url = "https://api.le-systeme-solaire.net/rest/bodies/"
+        response = requests.get(url)
+        
+        if response.status_code == 200:
+            self._data = response.json()['bodies']
+            print("Daten erfolgreich abgerufen!")
+        else:
+            raise Exception(f"Fehler beim Abrufen der Daten: {response.status_code}")
+
+    @property
+    def dataFrame(self):
+        """Gibt die heruntergeladenen Daten als Pandas DataFrame zurück."""
+        if self._data is None:
+            raise Exception("Daten wurden noch nicht geladen. Bitte rufen Sie fetchData() auf.")
+        return pd.DataFrame(self._data)
+
+    def filterPlanets(self):
+        """Filtert nur die echten Planeten aus den Daten."""
+        df = self.dataFrame
+        # Filter: echte Planeten haben 'isPlanet' als True
+        planets = df[df['isPlanet'] == True]
+        return planets
+
+    def plotPlanetRadii(self):
+        """Erstellt ein Balkendiagramm der Radii der Planeten."""
+        planets = self.filterPlanets()
+        
+        # Wir nehmen nur die Namen und Radien der Planeten
+        names = planets['englishName']
+        radii = planets['meanRadius']
+        
+        # Erstellen des Diagramms
+        plt.figure(figsize=(10, 6))
+        plt.bar(names, radii)
+        plt.title("Mittlere Radien der Planeten")
+        plt.xlabel("Planet")
+        plt.ylabel("Radius (km)")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+
+# Nutzung der Klasse
+if __name__ == "__main__":
+    # Instanziere die Klasse
+    client = PlanetClient()
+
+    # Daten abrufen
+    client.fetchData()
+
+    # Daten als DataFrame ausgeben
+    print("\nAlle Daten als DataFrame:")
+    print(client.dataFrame.head())
+
+    # Planeten filtern
+    planets = client.filterPlanets()
+    print("\nGefilterte Planeten:")
+    print(planets[['englishName', 'meanRadius']])
+
+    # Radii der Planeten visualisieren
+    client.plotPlanetRadii()
