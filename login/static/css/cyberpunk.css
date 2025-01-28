@@ -1,0 +1,440 @@
+/* Grundlegende CSS-Variablen für Neon-Farben */
+:root {
+    --neon-cyan: #00fff0;
+    --neon-pink: #ff0044;
+    --neon-purple: #9000ff;
+    --neon-green: #00ff66;
+    --neon-red: #ff0033;
+    --bg-dark: #000913;
+    --text-color: #ffffff;
+}
+
+/* Grundlegende Reset und Basis-Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--bg-dark);
+    background-image: url('../images/portraitShadows.webp'); /* Pfad ggf. anpassen */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header/Hero Sektion */
+.hero {
+    padding: 0;
+    margin: 0; /* Passt sich der Höhe des Inhalts an */
+    max-height: auto; /* Begrenze die maximale Höhe auf den Viewport */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(
+        45deg,
+        rgba(10, 10, 10, 0.5),
+        rgba(0, 13, 25, 0.5)
+    ); /* Optional: transparenter */
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+    padding: 1.5rem;
+    margin: 1.5 auto;
+    position: relative;
+    background: transparent;
+}
+
+/* Vision Text im Hero-Bereich */
+.vision-text {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--neon-pink);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.vision-wrapper {
+    background: transparent; /* Sicherstellen, dass kein schwarzer Container vorhanden ist */
+}
+
+/* Cyber Link Section innerhalb der Vision */
+.cyber-link {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.cyber-link .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Kontaktformular innerhalb der Vision */
+.vision-text .contact {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--neon-cyan);
+}
+
+.vision-text .contact .container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.vision-text .cyber-card {
+    background: rgba(0, 0, 0, 0.4);
+    margin: 0;
+    padding: 2.5rem;
+}
+
+.vision-text .contact h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.vision-text .form-group input,
+.vision-text .form-group textarea {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.vision-text h2 {
+    margin-bottom: 1.5rem;
+}
+
+.vision-text p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 68, 0.3);
+}
+
+.vision-text:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+/* Grid Overlay Effect */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto; /* Begrenze das Overlay vertikal */
+    height: 90%; /* Nur 90% der Höhe des übergeordneten Elements */
+    width: 95%; /* Nur 95% der Breite des übergeordneten Elements */
+    margin: 0 auto; /* Zentriere das Grid */
+    background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px),
+        linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+/* Neon Text Effekte */
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-color);
+    text-shadow:
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+    animation: neonPulse 2s infinite;
+    margin-bottom: 1.5rem;
+}
+
+.neon-text-pink {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-color);
+    text-shadow:
+        0 0 5px var(--neon-pink),
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink);
+}
+
+/* Status Indicator */
+.status-indicator {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--neon-pink);
+    border-radius: 50%;
+    animation: statusPulse 1.5s infinite;
+}
+
+.status-text {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* Cyber Cards */
+.cyber-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--neon-cyan);
+    padding: 2rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* Sektionen */
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+/* Kontaktformular */
+.contact {
+    margin-top: 1rem; /* Verhindere übermäßigen Abstand */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--neon-cyan);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
+    color: var(--text-color);
+    padding: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Formular Feedback Styles */
+.form-feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-feedback:not(:empty) {
+    opacity: 1;
+}
+
+.form-feedback.success {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+    border: 1px solid var(--neon-green);
+    background: rgba(0, 255, 102, 0.1);
+}
+
+.form-feedback.error {
+    color: var(--neon-red);
+    text-shadow: 0 0 5px var(--neon-red);
+    border: 1px solid var(--neon-red);
+    background: rgba(255, 0, 51, 0.1);
+}
+
+/* Buttons */
+.btn-neon {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--text-color);
+    padding: 0.8rem 2rem;
+    font-family: 'Share Tech Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-neon:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.btn-neon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-neon-large {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--neon-purple);
+    color: var(--text-color);
+    padding: 1.2rem 3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-neon-large:hover {
+    background: var(--neon-purple);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--neon-purple);
+    transform: translateY(-3px);
+}
+
+/* Animationen */
+@keyframes neonPulse {
+    0%,
+    100% {
+        text-shadow:
+            0 0 5px var(--neon-cyan),
+            0 0 10px var(--neon-cyan),
+            0 0 20px var(--neon-cyan);
+    }
+    50% {
+        text-shadow:
+            0 0 10px var(--neon-cyan),
+            0 0 20px var(--neon-cyan),
+            0 0 30px var(--neon-cyan);
+    }
+}
+
+@keyframes statusPulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .status-text {
+        font-size: 1rem;
+    }
+    .vision-text {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+    .vision-text p {
+        font-size: 1rem;
+    }
+    .btn-neon-large {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .vision-text {
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .cyber-card {
+        padding: 1.5rem;
+    }
+    .btn-neon-large {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Aligned List Styles */
+.aligned-list {
+    padding-left: 20px; /* Einrückung für die Listenpunkte */
+    list-style-position: inside; /* Punkte innerhalb des Textblocks platzieren */
+}
+.aligned-list li {
+    margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
+    text-indent: -20px; /* Zurückrücken der Punkte direkt vor den Text */
+    padding-left: 20px; /* Text nach den Punkten gleichmäßig ausrichten */
+}
+
+/* Zusätzliche Chatbot-Styles */
+.chat-container {
+    border: 1px solid var(--neon-cyan) !important;
+    box-shadow:
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-pink) !important;
+    background: linear-gradient(45deg, var(--bg-dark), #0a0a2e) !important;
+}
+.message-bot {
+    background: rgba(0, 18, 25, 0.9) !important;
+    border: 1px solid var(--neon-cyan) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+.message-user {
+    background: rgba(26, 0, 26, 0.9) !important;
+    border: 1px solid var(--neon-pink) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    text-shadow: 0 0 10px var(--neon-pink);
+}
+.chat-input {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-top: 1px solid var(--neon-cyan) !important;
+}
+.send-button {
+    transition: all 0.3s ease !important;
+    background: var(--neon-purple) !important;
+}
+.send-button:hover {
+    box-shadow: 0 0 15px var(--neon-purple) !important;
+}
