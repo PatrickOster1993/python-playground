@@ -1,0 +1,4 @@
+Aufgabe: Class Bank mit Eigenschaften erstellen. 
+onlineBanking ist optional. 
+und paar eigenschaften wie Address, Swift Code name , logo . 
+
