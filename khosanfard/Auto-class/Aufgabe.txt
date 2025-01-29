@@ -1,0 +1,5 @@
+Aufgabe:
+Erstellen Sie mehrere Klassen zum Thema "Auto".
+Jede Klasse soll in einer separaten .py-Datei gespeichert werden.
+Implementieren Sie eine Hauptklasse, die die anderen Klassen über Aggregation integriert.
+Geben Sie ein Beispiel aus, das zeigt, wie die Klassen zusammenarbeiten.

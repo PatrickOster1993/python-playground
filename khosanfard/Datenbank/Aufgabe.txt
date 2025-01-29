@@ -1,0 +1,10 @@
+Klassenstruktur:
+
+1
+Eine User-Klasse mit den Attributen id, name, email, password, role_id.
+Eine Role-Klasse mit den Attributen id, name.
+
+2
+HTML-Seiten:
+index.html: Enthält ein Login-Formular zur Benutzerauthentifizierung.
+dashboard.html: Eine einfache Seite, die nur für eingeloggte Benutzer zugänglich ist.

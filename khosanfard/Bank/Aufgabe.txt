@@ -1,4 +1,12 @@
-Aufgabe: Class Bank mit Eigenschaften erstellen. 
-onlineBanking ist optional. 
-und paar eigenschaften wie Address, Swift Code name , logo . 
+Erstellen Sie eine Klasse Bank mit folgenden Eigenschaften:
 
+Pflichtattribute:
+address (Adresse der Bank)
+swift_code (SWIFT-Code der Bank)
+name (Name der Bank)
+logo (Logo der Bank in Text- oder Bildform)
+Optionales Attribut:
+online_banking (gibt an, ob die Bank Online-Banking unterstützt; Standardwert: False)
+Implementieren Sie einen Konstruktor für die Klasse, um die Attribute zu initialisieren.
+
+Fügen Sie eine Methode hinzu, um alle Eigenschaften der Bank als schön formatierten Text auszugeben.
