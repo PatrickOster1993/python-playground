@@ -1,5 +1,5 @@
 /venv
-/rollenspiel/__pycache__
+__pycache__
 .cache.sqlite
 example.txt
 snake.txt
